@@ -8,40 +8,36 @@ import javax.persistence.*;
 // account table -> 
 //acc_number, acc_type, acc_bank_name, acc_ifsc, salary, existing_emi, user_employment_type, monthly_savings
 @Entity
-
 public class Account implements Serializable{
-	
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 4068356449088660689L;
 
 	@OneToOne
     private User user;
 	
 	@Column(name = "acc_number")
-	private int accnumber;
+	private int acc_number;
 	
 	@Column(name = "acc_type")
-	private String acctype;
+	private String acc_type;
 	
 	@Column(name = "acc_bank_name")
-	private String accbankname;
+	private String acc_bank_name;
 	
 	@Column(name = "acc_ifsc")
-	private String accifsc;
+	private String acc_ifsc;
 	
-	@Column(name = "accnumber")
+	@Column(name = "salary")
 	private int salary;
 	
 	@Column(name = "existing_emi")
-	private int exisitingemi;
+	private int exisiting_emi;
 	
 	@Column(name = "user_employment_type")
-	private String useremploymenttype;
+	private String user_employment_type;
 	
 	@Column(name = "monthly_savings")
-	private int monthlysavings;
+	private int monthly_savings;
 	
 	@OneToMany(cascade=CascadeType.ALL)
 	@JoinColumn(name = "acc_number", referencedColumnName = "acc_number")
@@ -62,36 +58,36 @@ public class Account implements Serializable{
 		this.user = user;
 	}
 
-	public int getAccnumber() {
-		return accnumber;
+	public int getAcc_number() {
+		return acc_number;
 	}
 
-	public void setAccnumber(int accnumber) {
-		this.accnumber = accnumber;
+	public void setAcc_number(int acc_number) {
+		this.acc_number = acc_number;
 	}
 
-	public String getAcctype() {
-		return acctype;
+	public String getAcc_type() {
+		return acc_type;
 	}
 
-	public void setAcctype(String acctype) {
-		this.acctype = acctype;
+	public void setAcc_type(String acc_type) {
+		this.acc_type = acc_type;
 	}
 
-	public String getAccbankname() {
-		return accbankname;
+	public String getAcc_bank_name() {
+		return acc_bank_name;
 	}
 
-	public void setAccbankname(String accbankname) {
-		this.accbankname = accbankname;
+	public void setAcc_bank_name(String acc_bank_name) {
+		this.acc_bank_name = acc_bank_name;
 	}
 
-	public String getAccifsc() {
-		return accifsc;
+	public String getAcc_ifsc() {
+		return acc_ifsc;
 	}
 
-	public void setAccifsc(String accifsc) {
-		this.accifsc = accifsc;
+	public void setAcc_ifsc(String acc_ifsc) {
+		this.acc_ifsc = acc_ifsc;
 	}
 
 	public int getSalary() {
@@ -102,30 +98,30 @@ public class Account implements Serializable{
 		this.salary = salary;
 	}
 
-	public int getExisitingemi() {
-		return exisitingemi;
+	public int getExisiting_emi() {
+		return exisiting_emi;
 	}
 
-	public void setExisitingemi(int exisitingemi) {
-		this.exisitingemi = exisitingemi;
+	public void setExisiting_emi(int exisiting_emi) {
+		this.exisiting_emi = exisiting_emi;
 	}
 
-	public String getUseremploymenttype() {
-		return useremploymenttype;
+	public String getUser_employment_type() {
+		return user_employment_type;
 	}
 
-	public void setUseremploymenttype(String useremploymenttype) {
-		this.useremploymenttype = useremploymenttype;
+	public void setUser_employment_type(String user_employment_type) {
+		this.user_employment_type = user_employment_type;
 	}
 
-	public int getMonthlysavings() {
-		return monthlysavings;
+	public int getMonthly_savings() {
+		return monthly_savings;
 	}
 
-	public void setMonthlysavings(int monthlysavings) {
-		this.monthlysavings = monthlysavings;
+	public void setMonthly_savings(int monthly_savings) {
+		this.monthly_savings = monthly_savings;
 	}
-	
+
 	public Set<Loan> getLoan() {
 		return loan;
 	}
@@ -141,13 +137,13 @@ public class Account implements Serializable{
 	public void setVehicle(Set<Vehicle> vehicle) {
 		this.vehicle = vehicle;
 	}
-	
+
 	@Override
 	public String toString() {
-		return "Account [acc_number=" + accnumber + ", acc_type=" + acctype
-				+ ", acc_bank_name=" + accbankname + ", acc_ifsc=" + accifsc + ", salary=" + salary
-				+ ", exisiting_emi=" + exisitingemi + ", user_emploment_type=" + useremploymenttype
-				+ ", monthly_savings=" + monthlysavings + ", loan=" + loan + ", vehicle=" + vehicle + ",]";
+		return "Account [user=" + user + ", acc_number=" + acc_number + ", acc_type=" + acc_type + ", acc_bank_name="
+				+ acc_bank_name + ", acc_ifsc=" + acc_ifsc + ", salary=" + salary + ", exisiting_emi=" + exisiting_emi
+				+ ", user_employment_type=" + user_employment_type + ", monthly_savings=" + monthly_savings + ", loan="
+				+ loan + ", vehicle=" + vehicle + "]";
 	}
 
 }
