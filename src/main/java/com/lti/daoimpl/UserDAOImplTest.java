@@ -1,4 +1,4 @@
-package daoimpl;
+package com.lti.daoimpl;
 
 import java.sql.Date;
 
@@ -6,8 +6,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-import dao.UserDAO;
-import model.User;
+import com.lti.dao.UserDAO;
+import com.lti.model.User;
 
 public class UserDAOImplTest {
 

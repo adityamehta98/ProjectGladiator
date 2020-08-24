@@ -1,7 +1,7 @@
-package dao;
+package com.lti.dao;
 
 import java.util.List;
-import model.Loan;
+import com.lti.model.Loan;
 
 public interface LoanDAO {
 	

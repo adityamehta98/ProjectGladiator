@@ -1,7 +1,7 @@
-package dao;
+package com.lti.dao;
 
 import java.util.List;
-import model.Account;
+import com.lti.model.Account;
 
 public interface AccountDAO {
 	

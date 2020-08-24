@@ -1,7 +1,7 @@
-package dao;
+package com.lti.dao;
 
 import java.util.List;
-import model.User;
+import com.lti.model.User;
 
 public interface UserDAO
 {

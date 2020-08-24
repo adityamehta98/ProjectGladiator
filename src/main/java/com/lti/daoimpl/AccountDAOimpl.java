@@ -1,4 +1,4 @@
-package daoimpl;
+package com.lti.daoimpl;
 
 import java.util.List;
 
@@ -8,9 +8,9 @@ import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Repository;
 
-import dao.AccountDAO;
-import model.Account;
-import model.User;
+import com.lti.dao.AccountDAO;
+import com.lti.model.Account;
+import com.lti.model.User;
 
 
 @Repository

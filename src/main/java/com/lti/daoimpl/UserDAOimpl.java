@@ -1,4 +1,4 @@
-package daoimpl;
+package com.lti.daoimpl;
 
 import java.util.List;
 
@@ -12,8 +12,8 @@ import org.hibernate.cfg.Configuration;
 import org.hibernate.query.Query;
 import org.springframework.stereotype.Repository;
 
-import dao.UserDAO;
-import model.User;
+import com.lti.dao.UserDAO;
+import com.lti.model.User;
 
 
 @Repository

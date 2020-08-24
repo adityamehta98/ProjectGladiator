@@ -1,8 +1,8 @@
-package dao;
+package com.lti.dao;
 
 import java.util.List;
 
-import model.*;
+import com.lti.model.*;
 
 public interface AdminDAO
 {

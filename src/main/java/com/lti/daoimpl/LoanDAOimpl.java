@@ -1,4 +1,4 @@
-package daoimpl;
+package com.lti.daoimpl;
 
 import java.util.List;
 
@@ -7,9 +7,9 @@ import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Repository;
-import dao.LoanDAO;
-import model.Account;
-import model.Loan;
+import com.lti.dao.LoanDAO;
+import com.lti.model.Account;
+import com.lti.model.Loan;
 
 @Repository
 public class LoanDAOimpl implements LoanDAO{
