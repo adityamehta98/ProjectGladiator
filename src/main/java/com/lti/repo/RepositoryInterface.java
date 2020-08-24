@@ -21,4 +21,20 @@ public interface RepositoryInterface {
 	//Vehicle
 	public long registerVehicle(Vehicle vehicle);
 	
+	/*
+	 * 
+	 * Some CRUD Operations For Loan
+	 * 
+	 */
+	
+	public List<Loan> viewAllLoans();
+	
+	public Loan getLoanById(long loanId);
+	
+	public void removeLoanById(long loanId);
+	
+	public Loan retrieveLoanByloanType(String loan);
+	
+	public void removeLoanByApplicationStatus(String applicationStatus);
+	
 }

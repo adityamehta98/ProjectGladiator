@@ -26,6 +26,44 @@ public class NewProjectApplicationTests {
 	private RepositoryInterface repo;
 	
 	@Test
+	public void removeLoanById() {
+		repo.removeLoanById(1);
+	}
+	
+	/*
+	@Test
+	void removeLoanByApplicationStatus()
+	{
+		repo.removeLoanByApplicationStatus("Complete");
+	}
+	
+	
+	 
+	@Test
+	public void removeLoanById() {
+		repo.removeLoanById(1);
+	}
+	 
+	
+	@Test
+	void findLoanById() {
+		System.out.println(repo.getLoanById(1));
+	}
+	
+	
+	
+	@Test
+	void fetchAll() {
+		System.out.println(repo.viewAllLoans());
+	}
+	*/
+	
+	
+	
+	
+	/*
+	@Test
+	
 	void registerUser() {
 		
 		UserTable user=new UserTable();
@@ -100,5 +138,6 @@ public class NewProjectApplicationTests {
 		vehicle.setOnRoadPrice(BigDecimal.valueOf(760000));
 		System.out.println(repo.registerVehicle(vehicle));
 	}
+	*/
 
 }

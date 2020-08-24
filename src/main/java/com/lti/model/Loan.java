@@ -53,13 +53,14 @@ public class Loan implements Serializable {
 	private List<Account> accounts;
 
 	//bi-directional many-to-one association to Vehicle
-	@ManyToOne
+	@ManyToOne(fetch=FetchType.EAGER)
 	@JoinColumn(name="VEHICLE_ID")
 	private Vehicle vehicle;
 
 	//bi-directional many-to-one association to UserTable
 	@OneToMany(mappedBy="loan")
 	private List<UserTable> userTables;
+   
 
 	public Loan() {
 	}
