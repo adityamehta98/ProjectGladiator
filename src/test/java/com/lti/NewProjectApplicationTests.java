@@ -12,7 +12,8 @@ import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabas
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase.Replace;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.Rollback;
-import com.lti.model.*;
+
+import com.lti.model.UserTable;
 import com.lti.repo.RepositoryInterface;
 
 
@@ -25,24 +26,53 @@ public class NewProjectApplicationTests {
 	@Autowired
 	private RepositoryInterface repo;
 	
+	//----------------------------------------------------------------
+	// USER OPERATIONS!
+	
+//	@Test
+//	void fetchAll() {
+//		System.out.println(repo.fetchAllUsers());
+//	}
+	
+	
 //	@Test
 //	void registerUser() {
 //		
 //		UserTable user=new UserTable();
-//		user.setUserId(1);
-//		user.setUserNameFirst("Adi");
-//		user.setUserNameLast("Mehta");
+//		user.setUserId(2);
+//		user.setUserNameFirst("Park");
+//		user.setUserNameLast("Jimin");
 //		user.setUserNameMiddle("");
-//		user.setUserAge(BigDecimal.valueOf(21));
+//		user.setUserAge(BigDecimal.valueOf(24));
 //		user.setUserGender("Male");
-//		user.setUserAddress("221B Bakers street");
-//		user.setUserEmail("adya@gmail.com");
-//		user.setUserPass("Aditya@123");
+//		user.setUserAddress("Busan, South Korea");
+//		user.setUserEmail("babyg@gmail.com");
+//		user.setUserPass("Aditya@123yoonmin");
 //		user.setUserZip("302001");
 //		user.setUserType("New");
 //		repo.registerUser(user);
 //	}
-//	
+	
+//	@Test
+//	void removeUser() {
+//		repo.removeUserByUserID(1);
+//	}
+
+//	@Test
+//	void findUserById() {
+//		System.out.println(repo.findUserByUserID(2).toString());
+//	}
+	
+//	@Test
+//	void findUserIdbyEmailandPass() {
+//		long id = repo.findUserIdByEmailAndPassword("babyg@gmail.com", "Aditya@123yoonmin");
+//		System.out.println("the user id is: " +id);
+//	}
+	
+	//-------------------------------------------------------------
+	//ADMIN OPERATIONS
+	
+	
 //	@Test
 //	void registerAdmin() {
 //		Admin admin = new Admin();
