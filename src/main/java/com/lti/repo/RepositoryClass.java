@@ -17,7 +17,7 @@ public class RepositoryClass implements RepositoryInterface {
 	@PersistenceContext
 	EntityManager em;
 	
-	//AccountDAOImpl
+	//UserDAOImpl
 	//-----------------------------------------------------------------
 	@Override
 	@Transactional
@@ -28,7 +28,6 @@ public class RepositoryClass implements RepositoryInterface {
 	
 	@SuppressWarnings("unchecked")
 	@Override
-	@Transactional
 	public List<UserTable> fetchAllUsers() {
 		return em
 				.createNamedQuery("UserTable.findAll")
@@ -36,14 +35,12 @@ public class RepositoryClass implements RepositoryInterface {
 	}
 	
 	@Override
-	@Transactional
 	public UserTable findUserByUserID(long userId) {
 		UserTable res = em.find(UserTable.class, userId);
 		return res;
 	}
 
 	@Override
-	@Transactional
 	public long findUserIdByEmailAndPassword(String userEmail, String userPass) {
 		return (long) em
 				.createQuery("select id from UserTable where userEmail = :em and userPass = :pw ")
@@ -59,6 +56,18 @@ public class RepositoryClass implements RepositoryInterface {
 		em.remove(user);
 	}
 	
+	@Override
+	public boolean isUserPresent(String userEmail) {
+		return (long) em
+				.createQuery("select count(u.id) from Customer u where u.email = :em ")
+				.setParameter("em", userEmail)
+				.getSingleResult() == 1 ? true : false;
+	}
+	
+	@Override
+	public UserTable findById(int userId) {
+		return em.find(UserTable.class, userId);
+	}
 	//--------------------------------------------------------------
 	//AdminDAOImpl
 	

@@ -25,7 +25,10 @@ public class NewProjectApplicationTests {
 	
 	@Autowired
 	private RepositoryInterface repo;
-	
+//	void isUserPresent() {
+//		boolean id = repo.isUserPresent("aditya@gmail.com");
+//		System.out.println(id);
+//	}
 	//----------------------------------------------------------------
 	// USER OPERATIONS!
 	
