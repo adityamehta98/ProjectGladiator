@@ -30,7 +30,7 @@ public class Vehicle implements Serializable {
 
 	@Column(name="VEHICLE_NAME", length=30)
 	private String vehicleName;
-	//chan
+	
 	@Column(name="VEHICLE_MODEL", length=30)
 	private String vehicleModel;
 
