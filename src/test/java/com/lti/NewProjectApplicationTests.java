@@ -86,16 +86,19 @@ public class NewProjectApplicationTests {
 		loan.setLoanEndDate(Date.valueOf("2021-09-12"));
 		System.out.println(repo.registerLoan(loan));
 	}
-//	
-//	@Test
-//	void registerVehicle() {
-//		Vehicle vehicle=new Vehicle();
-//		vehicle.setVehicleId(21234164);
-//		vehicle.setve("Maruti Suzuki Swift");
-//		vehicle.setVehiclemodel("VXI");
-//		vehicle.setVehicletype("Car");
-//		vehicle.setExshowroomprice("700000");
-//		vehicle.setOnroadprice("760000");
-//		System.out.println(repo.registerVehicle(vehicle));
-//	}
+	
+	@Test
+	void registerVehicle() {
+		Vehicle vehicle=new Vehicle();
+		vehicle.setVehicleId(21234164);
+		vehicle.setVehicleMake("Maruti Suzuki Swift");
+		vehicle.setVehicleModel("VXI");
+		vehicle.setVehicleType("Car");
+		vehicle.setVehicleYear(BigDecimal.valueOf(700000));
+		vehicle.setVehicleColour("Navy Blue");
+		vehicle.setExShowroomPrice(BigDecimal.valueOf(700000));
+		vehicle.setOnRoadPrice(BigDecimal.valueOf(760000));
+		System.out.println(repo.registerVehicle(vehicle));
+	}
+
 }
