@@ -1,5 +1,5 @@
 package com.lti.Dto;
 
-public class userDto {
+public class UserDto {
 
 }
