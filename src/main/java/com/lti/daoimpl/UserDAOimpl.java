@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.transaction.Transactional;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -73,6 +75,11 @@ public class UserDAOimpl implements UserDAO {
 		return false;
 	}
 
+	@Override
+	@Transactional
+	public void save(User user) {
+		entityManager.merge(user);
 	
-
+	
+	}
 }

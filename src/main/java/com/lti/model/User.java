@@ -1,7 +1,6 @@
 package com.lti.model;
 
 import java.io.Serializable;
-import java.sql.Date;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -11,11 +10,16 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import org.springframework.lang.NonNull;
+import java.time.LocalDate;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="user")
+@NamedQuery(name = "fetch-all", query = "select u from User as u")
 public class User implements Serializable{
 //	user_id, personal info (name, age, gender, address, etc), user_type(existing / new applicant), email, password
 //	for existing user -> all columns will be filled
@@ -45,7 +49,7 @@ public class User implements Serializable{
 	private String password;
 	
 	@Column(name="dob")
-	private Date dob ;
+	private LocalDate dob ;
 	
 	@Column(name="city")
 	private String city;
@@ -107,11 +111,11 @@ public class User implements Serializable{
 		this.address = address;
 	}
 
-	public Date getDob() {
+	public LocalDate getDob() {
 		return dob;
 	}
 
-	public void setDob(Date dob) {
+	public void setDob(LocalDate dob) {
 		this.dob = dob;
 	}
 

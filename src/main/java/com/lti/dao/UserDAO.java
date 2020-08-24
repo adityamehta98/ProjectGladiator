@@ -5,6 +5,10 @@ import com.lti.model.User;
 
 public interface UserDAO
 {
+	void save(User user);
+	
+	
+	
 	public List<User> findAll();
 	public User findById(int userid);
 	public int findByEmailAndPassword(String email, String password);
