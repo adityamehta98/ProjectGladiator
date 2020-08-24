@@ -16,7 +16,6 @@ import com.lti.dao.UserDAO;
 @AutoConfigureTestDatabase(replace = Replace.NONE)
 @Rollback(false)
 class ApplicationTest {
-
 	@Autowired
 	private UserDAO userDAO;
 	
