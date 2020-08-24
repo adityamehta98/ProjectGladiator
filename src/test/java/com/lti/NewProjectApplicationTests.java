@@ -21,7 +21,7 @@ import com.lti.repo.RepositoryInterface;
 @AutoConfigureTestDatabase(replace=Replace.NONE)
 @Rollback(false)
 public class NewProjectApplicationTests {
-	//new
+	
 	@Autowired
 	private RepositoryInterface repo;
 	
