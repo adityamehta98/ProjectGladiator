@@ -1,4 +1,4 @@
-package exception;
+package com.lti.exception;
 
 public class ConfigurationException extends Exception {
 

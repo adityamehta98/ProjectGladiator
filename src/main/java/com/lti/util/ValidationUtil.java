@@ -1,4 +1,4 @@
-package util;
+package com.lti.util;
 
 public class ValidationUtil {
     public static boolean isAlphabetic(String input) {
