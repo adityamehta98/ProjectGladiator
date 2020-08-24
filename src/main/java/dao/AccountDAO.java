@@ -9,6 +9,8 @@ public interface AccountDAO {
 	
 	List<Account> retrieveAccount();
 	
-	Account findByUserId(int userid);
+	Account findAccountByUserId(int userid);
+	
+	void removeAccount(int userid);
 	
 }

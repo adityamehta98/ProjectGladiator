@@ -33,8 +33,15 @@ public class AccountDAOimpl implements AccountDAO{
 	}
 	
 	@Override
-	public Account findByUserId(int userid) {
+	public Account findAccountByUserId(int userid) {
 		return entityManager.find(Account.class, userid);
+	}
+
+	@Override
+	public void removeAccount(int userid) {
+		Account account = findAccountByUserId(userid);
+		entityManager.remove(account);
+		
 	}
 	
 }
