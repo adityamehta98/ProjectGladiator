@@ -6,7 +6,7 @@ import model.User;
 public interface UserDAO
 {
 
-	void save(User user);
+	void save(User ref);
 
 	List<User> findAll();
 
@@ -15,5 +15,7 @@ public interface UserDAO
 	boolean isUserPresent(String email);
 
 	User findById(int userid);
+
+	void createUser(User ref);
 
 }

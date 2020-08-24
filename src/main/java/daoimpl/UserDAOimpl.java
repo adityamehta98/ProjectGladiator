@@ -6,6 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import dao.UserDAO;
@@ -14,9 +15,11 @@ import model.User;
 @Repository
 public class UserDAOimpl implements UserDAO {
 
-	@PersistenceContext
 	private EntityManager entityManager;
-	
+	@Autowired
+    public UserDAOimpl(EntityManager entityManager){
+        this.entityManager = entityManager;
+	}
 	@Override
 	@Transactional
 	public void save(User user) {
@@ -38,7 +41,7 @@ public class UserDAOimpl implements UserDAO {
 	@Override
 	public int findByEmailAndPassword(String email, String password) {
 		return (int) entityManager
-				.createQuery("select c.userid from User c where c.email = :em and c.password = :pw ")
+				.createQuery("select userid from User where email = :em and password = :pw ")
 				.setParameter("em", email)
 				.setParameter("pw", password)
 				.getSingleResult();
@@ -51,6 +54,11 @@ public class UserDAOimpl implements UserDAO {
 				.createQuery("select count(c.userid) from User c where c.email = :em ")
 				.setParameter("em", email)
 				.getSingleResult() == 1 ? true : false;
+	}
+	@Override
+	public void createUser(User ref) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 }

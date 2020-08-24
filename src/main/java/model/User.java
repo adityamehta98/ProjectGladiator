@@ -22,7 +22,7 @@ public class User implements Serializable{
 //	for new applicants -> only id, user_type, email, password
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY, generator = "Id_Gen")
-	@Column(name="user_id")
+	@Column(name="userid")
 	@NonNull
 	private int userid;
 	
@@ -30,7 +30,7 @@ public class User implements Serializable{
 	private String name;
 	
 	@Column(name="age")
-	private String age;
+	private int age;
 	
 	@Column(name="gender")
 	private String gender;
@@ -54,18 +54,34 @@ public class User implements Serializable{
 	private Number zip;
 	
 	@OneToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name = "user_id", referencedColumnName = "user_id")
+	@JoinColumn(name = "userid", referencedColumnName = "userid")
 	private Set<Account> account;
 	
 	@OneToMany(cascade=CascadeType.ALL)
-	@JoinColumn(name = "user_id", referencedColumnName = "user_id")
+	@JoinColumn(name = "userid", referencedColumnName = "userid")
 	private Set<Loan> loan;
 	
 	@OneToMany(cascade=CascadeType.ALL)
-	@JoinColumn(name = "user_id", referencedColumnName = "user_id")
+	@JoinColumn(name = "userid", referencedColumnName = "userid")
 	private Set<Vehicle> vehicle;
 	
-	public User() {}
+	public User(int userid, String name, int age, String gender, String address, String email, String password,
+			Date dob, String city, Number zip, Set<Account> account, Set<Loan> loan, Set<Vehicle> vehicle) {
+		super();
+		this.userid = userid;
+		this.name = name;
+		this.age = age;
+		this.gender = gender;
+		this.address = address;
+		this.email = email;
+		this.password = password;
+		this.dob = dob;
+		this.city = city;
+		this.zip = zip;
+		this.account = account;
+		this.loan = loan;
+		this.vehicle = vehicle;
+	}
 	
 	public int getUserid() {
 		return userid;
@@ -83,11 +99,11 @@ public class User implements Serializable{
 		this.name = name;
 	}
 
-	public String getAge() {
+	public int getAge() {
 		return age;
 	}
 
-	public void setAge(String age) {
+	public void setAge(int age) {
 		this.age = age;
 	}
 
@@ -169,11 +185,6 @@ public class User implements Serializable{
 
 	public void setPassword(String password) {
 		this.password = password;
-	}
-
-	@Override
-	public String toString() {
-		return "User [userid=" + userid + ", Name=" + name + ", Age=" + age + ", Gender=" + gender + ", Address=" + address + ", DOB=" + dob + ", City=" + city + ", Zip=" + zip + ", Account =" + account + ", Loan=" + loan + ", Vehicle=" + vehicle + ", Email=" + email + ",]";
 	}
 
 }
