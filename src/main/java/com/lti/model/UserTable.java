@@ -16,6 +16,8 @@ public class UserTable implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@SequenceGenerator(name = "User_Id_Seq", sequenceName = "User_Id_Seq", allocationSize = 1)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "User_Id_Seq")
 	@Column(name="USER_ID")
 	private long userId;
 
@@ -60,14 +62,6 @@ public class UserTable implements Serializable {
 	private Loan loan;
 
 	public UserTable() {
-	}
-
-	@Override
-	public String toString() {
-		return "UserTable [userId=" + userId + ", userAddress=" + userAddress + ", userAge=" + userAge + ", userEmail="
-				+ userEmail + ", userGender=" + userGender + ", userNameFirst=" + userNameFirst + ", userNameLast="
-				+ userNameLast + ", userNameMiddle=" + userNameMiddle + ", userPass=" + userPass + ", userType="
-				+ userType + ", userZip=" + userZip + ", account=" + account + ", loan=" + loan + "]";
 	}
 
 	public long getUserId() {
