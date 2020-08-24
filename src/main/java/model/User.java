@@ -65,9 +65,7 @@ public class User implements Serializable{
 	@JoinColumn(name = "userid", referencedColumnName = "userid")
 	private Set<Vehicle> vehicle;
 	
-	public User() {
-		// TODO Auto-generated constructor stub
-	}
+	public User() {}
 
 	public int getUserid() {
 		return userid;
