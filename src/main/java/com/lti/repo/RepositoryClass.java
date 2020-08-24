@@ -49,6 +49,7 @@ public class RepositoryClass implements RepositoryInterface {
 
 
 	@Override
+	@Transactional
 	public long registerVehicle(Vehicle vehicle) {
 		Vehicle v = em.merge(vehicle);
 		return v.getVehicleId();

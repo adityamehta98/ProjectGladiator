@@ -25,16 +25,16 @@ public class Vehicle implements Serializable {
 	@Column(name="ON_ROAD_PRICE")
 	private BigDecimal onRoadPrice;
 
-	@Column(name="VEHICLE_COLOUR")
+	@Column(name="VEHICLE_COLOUR", length=30)
 	private String vehicleColour;
 
-	@Column(name="VEHICLE_MAKE")
+	@Column(name="VEHICLE_MAKE", length=30)
 	private String vehicleMake;
 
-	@Column(name="VEHICLE_MODEL")
+	@Column(name="VEHICLE_MODEL", length=30)
 	private String vehicleModel;
 
-	@Column(name="VEHICLE_TYPE")
+	@Column(name="VEHICLE_TYPE", length=30)
 	private String vehicleType;
 
 	@Column(name="VEHICLE_YEAR")
