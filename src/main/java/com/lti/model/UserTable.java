@@ -62,6 +62,14 @@ public class UserTable implements Serializable {
 	public UserTable() {
 	}
 
+	@Override
+	public String toString() {
+		return "UserTable [userId=" + userId + ", userAddress=" + userAddress + ", userAge=" + userAge + ", userEmail="
+				+ userEmail + ", userGender=" + userGender + ", userNameFirst=" + userNameFirst + ", userNameLast="
+				+ userNameLast + ", userNameMiddle=" + userNameMiddle + ", userPass=" + userPass + ", userType="
+				+ userType + ", userZip=" + userZip + ", account=" + account + ", loan=" + loan + "]";
+	}
+
 	public long getUserId() {
 		return this.userId;
 	}
