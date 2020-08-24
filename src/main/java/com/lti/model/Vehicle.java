@@ -28,8 +28,8 @@ public class Vehicle implements Serializable {
 	@Column(name="VEHICLE_COLOUR", length=30)
 	private String vehicleColour;
 
-	@Column(name="VEHICLE_MAKE", length=30)
-	private String vehicleMake;
+	@Column(name="VEHICLE_NAME", length=30)
+	private String vehicleName;
 
 	@Column(name="VEHICLE_MODEL", length=30)
 	private String vehicleModel;
@@ -79,12 +79,12 @@ public class Vehicle implements Serializable {
 		this.vehicleColour = vehicleColour;
 	}
 
-	public String getVehicleMake() {
-		return this.vehicleMake;
+	public String getVehicleName() {
+		return this.vehicleName;
 	}
 
-	public void setVehicleMake(String vehicleMake) {
-		this.vehicleMake = vehicleMake;
+	public void setVehicleName(String vehicleName) {
+		this.vehicleName = vehicleName;
 	}
 
 	public String getVehicleModel() {

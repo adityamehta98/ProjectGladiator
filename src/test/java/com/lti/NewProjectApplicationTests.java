@@ -91,7 +91,7 @@ public class NewProjectApplicationTests {
 	void registerVehicle() {
 		Vehicle vehicle=new Vehicle();
 		vehicle.setVehicleId(21234164);
-		vehicle.setVehicleMake("Maruti Suzuki Swift");
+		vehicle.setVehicleName("Maruti Suzuki Swift");
 		vehicle.setVehicleModel("VXI");
 		vehicle.setVehicleType("Car");
 		vehicle.setVehicleYear(BigDecimal.valueOf(700000));
