@@ -5,17 +5,13 @@ import model.User;
 
 public interface UserDAO
 {
-
-	void save(User ref);
-
-	List<User> findAll();
-
-	int findByEmailAndPassword(String email, String password);
-
-	boolean isUserPresent(String email);
-
-	User findById(int userid);
-
-	void createUser(User ref);
+	public List<User> findAll();
+	public User findById(int userid);
+	public int findByEmailAndPassword(String email, String password);
+	public User getUserByEmail(String email);
+	public User createUser(User user);
+	public User updateUser(int userid, User user);
+	public boolean deleteUserById(int userid);
 
 }
+

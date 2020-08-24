@@ -65,24 +65,10 @@ public class User implements Serializable{
 	@JoinColumn(name = "userid", referencedColumnName = "userid")
 	private Set<Vehicle> vehicle;
 	
-	public User(int userid, String name, int age, String gender, String address, String email, String password,
-			Date dob, String city, Number zip, Set<Account> account, Set<Loan> loan, Set<Vehicle> vehicle) {
-		super();
-		this.userid = userid;
-		this.name = name;
-		this.age = age;
-		this.gender = gender;
-		this.address = address;
-		this.email = email;
-		this.password = password;
-		this.dob = dob;
-		this.city = city;
-		this.zip = zip;
-		this.account = account;
-		this.loan = loan;
-		this.vehicle = vehicle;
+	public User() {
+		// TODO Auto-generated constructor stub
 	}
-	
+
 	public int getUserid() {
 		return userid;
 	}

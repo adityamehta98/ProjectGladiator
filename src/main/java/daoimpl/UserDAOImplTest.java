@@ -23,10 +23,8 @@ public class UserDAOImplTest {
         l2.setDob(Date.valueOf("1998-7-22")); //YYYY-MM-DD
         l2.setCity("Jaipur");
         l2.setZip(302001);
-        UserDao.save(l2);
+        UserDao.createUser(l2);
 
 	}
 
 }
-
-//comment
