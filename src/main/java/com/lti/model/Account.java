@@ -1,149 +1,145 @@
 package com.lti.model;
 
 import java.io.Serializable;
-import java.util.Set;
-
 import javax.persistence.*;
+import java.math.BigDecimal;
+import java.util.List;
 
-// account table -> 
-//acc_number, acc_type, acc_bank_name, acc_ifsc, salary, existing_emi, user_employment_type, monthly_savings
+
 @Entity
-public class Account implements Serializable{
+@NamedQuery(name="Account.findAll", query="SELECT a FROM Account a")
+public class Account implements Serializable {
+	private static final long serialVersionUID = 1L;
 
-	private static final long serialVersionUID = 4068356449088660689L;
+	@Id
+	@Column(name="ACC_NUMBER", length=30)
+	private String accNumber;
 
-	@OneToOne
-    private User user;
-	
-	@Column(name = "acc_number")
-	private int acc_number;
-	
-	@Column(name = "acc_type")
-	private String acc_type;
-	
-	@Column(name = "acc_bank_name")
-	private String acc_bank_name;
-	
-	@Column(name = "acc_ifsc")
-	private String acc_ifsc;
-	
-	@Column(name = "salary")
-	private int salary;
-	
-	@Column(name = "existing_emi")
-	private int exisiting_emi;
-	
-	@Column(name = "user_employment_type")
-	private String user_employment_type;
-	
-	@Column(name = "monthly_savings")
-	private int monthly_savings;
-	
-	@OneToMany(cascade=CascadeType.ALL)
-	@JoinColumn(name = "acc_number", referencedColumnName = "acc_number")
-	private Set<Loan> loan;
-	
-	@OneToMany(cascade=CascadeType.ALL)
-	@JoinColumn(name = "acc_number", referencedColumnName = "acc_number")
-	private Set<Vehicle> vehicle;
+	@Column(name="ACC_BANK_NAME", length=30)
+	private String accBankName;
+
+	@Column(name="ACC_IFSC", length=30)
+	private String accIfsc;
+
+	@Column(name="ACC_TYPE", length=30)
+	private String accType;
+
+	@Column(name="EXISITING_EMI")
+	private BigDecimal exisitingEmi;
+
+	@Column(name="MONTHLY_SAVINGS")
+	private BigDecimal monthlySavings;
+
+	@Column(name="Salary")
+	private BigDecimal salary;
+
+	@Column(name="USER_EMPLOYMENT_TYPE", length=30)
+	private String userEmploymentType;
+
+	//bi-directional many-to-one association to Loan
+	@ManyToOne
+	@JoinColumn(name="LOAN_ID")
+	private Loan loan;
+
+	//bi-directional many-to-one association to UserTable
+	@OneToMany(mappedBy="account")
+	private List<UserTable> userTables;
 
 	public Account() {
 	}
 
-	public User getUser() {
-		return user;
+	public String getAccNumber() {
+		return this.accNumber;
 	}
 
-	public void setUser(User user) {
-		this.user = user;
+	public void setAccNumber(String accNumber) {
+		this.accNumber = accNumber;
 	}
 
-	public int getAcc_number() {
-		return acc_number;
+	public String getAccBankName() {
+		return this.accBankName;
 	}
 
-	public void setAcc_number(int acc_number) {
-		this.acc_number = acc_number;
+	public void setAccBankName(String accBankName) {
+		this.accBankName = accBankName;
 	}
 
-	public String getAcc_type() {
-		return acc_type;
+	public String getAccIfsc() {
+		return this.accIfsc;
 	}
 
-	public void setAcc_type(String acc_type) {
-		this.acc_type = acc_type;
+	public void setAccIfsc(String accIfsc) {
+		this.accIfsc = accIfsc;
 	}
 
-	public String getAcc_bank_name() {
-		return acc_bank_name;
+	public String getAccType() {
+		return this.accType;
 	}
 
-	public void setAcc_bank_name(String acc_bank_name) {
-		this.acc_bank_name = acc_bank_name;
+	public void setAccType(String accType) {
+		this.accType = accType;
 	}
 
-	public String getAcc_ifsc() {
-		return acc_ifsc;
+	public BigDecimal getExisitingEmi() {
+		return this.exisitingEmi;
 	}
 
-	public void setAcc_ifsc(String acc_ifsc) {
-		this.acc_ifsc = acc_ifsc;
+	public void setExisitingEmi(BigDecimal exisitingEmi) {
+		this.exisitingEmi = exisitingEmi;
 	}
 
-	public int getSalary() {
-		return salary;
+	public BigDecimal getMonthlySavings() {
+		return this.monthlySavings;
 	}
 
-	public void setSalary(int salary) {
+	public void setMonthlySavings(BigDecimal monthlySavings) {
+		this.monthlySavings = monthlySavings;
+	}
+
+	public BigDecimal getSalary() {
+		return this.salary;
+	}
+
+	public void setSalary(BigDecimal salary) {
 		this.salary = salary;
 	}
 
-	public int getExisiting_emi() {
-		return exisiting_emi;
+	public String getUserEmploymentType() {
+		return this.userEmploymentType;
 	}
 
-	public void setExisiting_emi(int exisiting_emi) {
-		this.exisiting_emi = exisiting_emi;
+	public void setUserEmploymentType(String userEmploymentType) {
+		this.userEmploymentType = userEmploymentType;
 	}
 
-	public String getUser_employment_type() {
-		return user_employment_type;
+	public Loan getLoan() {
+		return this.loan;
 	}
 
-	public void setUser_employment_type(String user_employment_type) {
-		this.user_employment_type = user_employment_type;
-	}
-
-	public int getMonthly_savings() {
-		return monthly_savings;
-	}
-
-	public void setMonthly_savings(int monthly_savings) {
-		this.monthly_savings = monthly_savings;
-	}
-
-	public Set<Loan> getLoan() {
-		return loan;
-	}
-
-	public void setLoan(Set<Loan> loan) {
+	public void setLoan(Loan loan) {
 		this.loan = loan;
 	}
 
-	public Set<Vehicle> getVehicle() {
-		return vehicle;
+	public List<UserTable> getUserTables() {
+		return this.userTables;
 	}
 
-	public void setVehicle(Set<Vehicle> vehicle) {
-		this.vehicle = vehicle;
+	public void setUserTables(List<UserTable> userTables) {
+		this.userTables = userTables;
 	}
 
-	@Override
-	public String toString() {
-		return "Account [user=" + user + ", acc_number=" + acc_number + ", acc_type=" + acc_type + ", acc_bank_name="
-				+ acc_bank_name + ", acc_ifsc=" + acc_ifsc + ", salary=" + salary + ", exisiting_emi=" + exisiting_emi
-				+ ", user_employment_type=" + user_employment_type + ", monthly_savings=" + monthly_savings + ", loan="
-				+ loan + ", vehicle=" + vehicle + "]";
+	public UserTable addUserTable(UserTable userTable) {
+		getUserTables().add(userTable);
+		userTable.setAccount(this);
+
+		return userTable;
+	}
+
+	public UserTable removeUserTable(UserTable userTable) {
+		getUserTables().remove(userTable);
+		userTable.setAccount(null);
+
+		return userTable;
 	}
 
 }

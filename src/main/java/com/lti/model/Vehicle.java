@@ -1,129 +1,136 @@
 package com.lti.model;
 
 import java.io.Serializable;
+import javax.persistence.*;
+import java.math.BigDecimal;
+import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 
-import org.springframework.lang.NonNull;
-
-@Entity
-public class Vehicle implements Serializable{
 /**
-	 * 
-	 */
-	private static final long serialVersionUID = 3535245312946838477L;
+ * The persistent class for the VEHICLE database table.
+ * 
+ */
+@Entity
+@NamedQuery(name="Vehicle.findAll", query="SELECT v FROM Vehicle v")
+public class Vehicle implements Serializable {
+	private static final long serialVersionUID = 1L;
 
-	//	vehicle_id, vehicle_make, vehicle_model, vehicle_type (two_wheeler/ four_wheeler/etc.), 
-//	vehicle name, ex_showroom_price, on_road_price
 	@Id
-	@Column(name="vehicle_id")
-	@NonNull
-	private int vehicleid;
-	
-	@Column(name="vehicle_type")
-	private String vehicletype;
-	
-	@Column(name="vehicle_name")
-	private String vehiclename;
-	
-	@Column(name="vehicle_model")
-	private String vehiclemodel;
-	
-	@Column(name="ex_showroom_price")
-	private String exshowroomprice;
-	
-	@Column(name="on_road_price")
-	private String onroadprice;
-	
-	@OneToOne
-	private Vehicle loanid;
-	
-	@ManyToOne
-	private Vehicle accountnumber;
-	
-	@ManyToOne
-	private Vehicle userid;
-	
-	public Vehicle() {}
-	
-	public int getVehicleid() {
-		return vehicleid;
+	@Column(name="VEHICLE_ID")
+	private long vehicleId;
+
+	@Column(name="EX_SHOWROOM_PRICE")
+	private BigDecimal exShowroomPrice;
+
+	@Column(name="ON_ROAD_PRICE")
+	private BigDecimal onRoadPrice;
+
+	@Column(name="VEHICLE_COLOUR")
+	private String vehicleColour;
+
+	@Column(name="VEHICLE_MAKE")
+	private String vehicleMake;
+
+	@Column(name="VEHICLE_MODEL")
+	private String vehicleModel;
+
+	@Column(name="VEHICLE_TYPE")
+	private String vehicleType;
+
+	@Column(name="VEHICLE_YEAR")
+	private BigDecimal vehicleYear;
+
+	//bi-directional many-to-one association to Loan
+	@OneToMany(mappedBy="vehicle")
+	private List<Loan> loans;
+
+	public Vehicle() {
 	}
 
-	public void setVehicleid(int vehicleid) {
-		this.vehicleid = vehicleid;
+	public long getVehicleId() {
+		return this.vehicleId;
 	}
 
-	public String getVehicletype() {
-		return vehicletype;
+	public void setVehicleId(long vehicleId) {
+		this.vehicleId = vehicleId;
 	}
 
-	public void setVehicletype(String vehicletype) {
-		this.vehicletype = vehicletype;
+	public BigDecimal getExShowroomPrice() {
+		return this.exShowroomPrice;
 	}
 
-	public String getVehiclename() {
-		return vehiclename;
+	public void setExShowroomPrice(BigDecimal exShowroomPrice) {
+		this.exShowroomPrice = exShowroomPrice;
 	}
 
-	public void setVehiclename(String vehiclename) {
-		this.vehiclename = vehiclename;
+	public BigDecimal getOnRoadPrice() {
+		return this.onRoadPrice;
 	}
 
-	public String getVehiclemodel() {
-		return vehiclemodel;
+	public void setOnRoadPrice(BigDecimal onRoadPrice) {
+		this.onRoadPrice = onRoadPrice;
 	}
 
-	public void setVehiclemodel(String vehiclemodel) {
-		this.vehiclemodel = vehiclemodel;
+	public String getVehicleColour() {
+		return this.vehicleColour;
 	}
 
-	public String getExshowroomprice() {
-		return exshowroomprice;
+	public void setVehicleColour(String vehicleColour) {
+		this.vehicleColour = vehicleColour;
 	}
 
-	public void setExshowroomprice(String exshowroomprice) {
-		this.exshowroomprice = exshowroomprice;
+	public String getVehicleMake() {
+		return this.vehicleMake;
 	}
 
-	public String getOnroadprice() {
-		return onroadprice;
+	public void setVehicleMake(String vehicleMake) {
+		this.vehicleMake = vehicleMake;
 	}
 
-	public void setOnroadprice(String onroadprice) {
-		this.onroadprice = onroadprice;
+	public String getVehicleModel() {
+		return this.vehicleModel;
 	}
 
-	public Vehicle getLoanid() {
-		return loanid;
+	public void setVehicleModel(String vehicleModel) {
+		this.vehicleModel = vehicleModel;
 	}
 
-	public void setLoanid(Vehicle loanid) {
-		this.loanid = loanid;
+	public String getVehicleType() {
+		return this.vehicleType;
 	}
 
-	public Vehicle getAccountnumber() {
-		return accountnumber;
+	public void setVehicleType(String vehicleType) {
+		this.vehicleType = vehicleType;
 	}
 
-	public void setAccountnumber(Vehicle accountnumber) {
-		this.accountnumber = accountnumber;
+	public BigDecimal getVehicleYear() {
+		return this.vehicleYear;
 	}
 
-	public Vehicle getUserid() {
-		return userid;
+	public void setVehicleYear(BigDecimal vehicleYear) {
+		this.vehicleYear = vehicleYear;
 	}
 
-	public void setUserid(Vehicle userid) {
-		this.userid = userid;
+	public List<Loan> getLoans() {
+		return this.loans;
 	}
-	
-	@Override
-	public String toString() {
-		return "User [Vehicle ID=" + vehicleid + ", Vehicle Type=" + vehicletype + ", Vehicle Name=" + vehiclename + ", Vehicle Model=" + vehiclemodel + ", Ex Showroom Price=" + exshowroomprice + ", On Road Price=" + onroadprice + ", Loan ID=" + loanid + ", Account Number=" + accountnumber + ",]";
+
+	public void setLoans(List<Loan> loans) {
+		this.loans = loans;
 	}
+
+	public Loan addLoan(Loan loan) {
+		getLoans().add(loan);
+		loan.setVehicle(this);
+
+		return loan;
+	}
+
+	public Loan removeLoan(Loan loan) {
+		getLoans().remove(loan);
+		loan.setVehicle(null);
+
+		return loan;
+	}
+
 }

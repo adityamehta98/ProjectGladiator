@@ -1,196 +1,199 @@
 package com.lti.model;
 
 import java.io.Serializable;
-import java.sql.Date;
-import java.util.Set;
+import javax.persistence.*;
+import java.math.BigDecimal;
+import java.util.Date;
+import java.util.List;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
 
+/**
+ * The persistent class for the LOAN database table.
+ * 
+ */
 @Entity
-@Table(name = "loan")
-public class Loan implements Serializable{
-	
-	private static final long serialVersionUID = 2871439282547949125L;
+@NamedQuery(name="Loan.findAll", query="SELECT l FROM Loan l")
+public class Loan implements Serializable {
+	private static final long serialVersionUID = 1L;
 
-	public Loan() {	}
-	
 	@Id
-	@GeneratedValue
-	@Column(name = "loan_id")
-	private int loanId;
-	
-	@Column(name = "loan_amount")
-	private float loanAmount;
-	
-	@Column(name = "interest_rate")
-	private float interestRate;
-	
-	@Column(name = "processing_fee")
-	private float processingFee;
-	
-	@Column(name = "emi")
-	private float emi;
-	
-	@Column(name = "tenure_in_months")
-	private int tenureInMonths;
-	
-	@Column(name = "application_status")
+	@Column(name="LOAN_ID")
+	private long loanId;
+
+	@Column(name="APPLICATION_STATUS", length=30)
 	private String applicationStatus;
-	
-	@Column(name = "loan_status")
+
+	@Column(name="EMI")
+	private BigDecimal emi;
+
+	@Column(name="INTEREST_RATE")
+	private BigDecimal interestRate;
+
+	@Column(name="LOAN_AMOUNT")
+	private BigDecimal loanAmount;
+
+	@Temporal(TemporalType.DATE)
+	@Column(name="LOAN_END_DATE")
+	private Date loanEndDate;
+
+	@Temporal(TemporalType.DATE)
+	@Column(name="LOAN_START_DATE")
+	private Date loanStartDate;
+
+	@Column(name="LOAN_STATUS", length=30)
 	private String loanStatus;
-	
-	
-	@Column(name = "loan_starting_date")
-	private Date loanStartingDate;
-	
-	@Column(name = "loan_ending_date")
-	private Date loanEndingDate;
 
-	
-	@ManyToOne
-    private User userid;
-	
-	@ManyToOne
-    private Account accountnumber;
-	
-	@OneToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name = "loan_id", referencedColumnName = "loan_id")
-	private Set<Vehicle> vehicle;
+	@Column(name="PROCESSING_FEE")
+	private BigDecimal processingFee;
 
-	public int getLoanId() {
-		return loanId;
+	private BigDecimal tenure;
+
+	//bi-directional many-to-one association to Account
+	@OneToMany(mappedBy="loan")
+	private List<Account> accounts;
+
+	//bi-directional many-to-one association to Vehicle
+	@ManyToOne
+	@JoinColumn(name="VEHICLE_ID")
+	private Vehicle vehicle;
+
+	//bi-directional many-to-one association to UserTable
+	@OneToMany(mappedBy="loan")
+	private List<UserTable> userTables;
+
+	public Loan() {
 	}
 
+	public long getLoanId() {
+		return this.loanId;
+	}
 
-	public void setLoanId(int loanId) {
+	public void setLoanId(long loanId) {
 		this.loanId = loanId;
 	}
 
-
-	public float getLoanAmount() {
-		return loanAmount;
-	}
-
-
-	public void setLoanAmount(float loanAmount) {
-		this.loanAmount = loanAmount;
-	}
-
-
-	public float getInterestRate() {
-		return interestRate;
-	}
-
-
-	public void setInterestRate(float interestRate) {
-		this.interestRate = interestRate;
-	}
-
-
-	public float getProcessingFee() {
-		return processingFee;
-	}
-
-
-	public void setProcessingFee(float processingFee) {
-		this.processingFee = processingFee;
-	}
-
-
-	public float getEmi() {
-		return emi;
-	}
-
-
-	public void setEmi(float emi) {
-		this.emi = emi;
-	}
-
-
-	public int getTenureInMonths() {
-		return tenureInMonths;
-	}
-
-
-	public void setTenureInMonths(int tenureInMonths) {
-		this.tenureInMonths = tenureInMonths;
-	}
-
-
 	public String getApplicationStatus() {
-		return applicationStatus;
+		return this.applicationStatus;
 	}
-
 
 	public void setApplicationStatus(String applicationStatus) {
 		this.applicationStatus = applicationStatus;
 	}
 
-
-	public String getLoanStatus() {
-		return loanStatus;
+	public BigDecimal getEmi() {
+		return this.emi;
 	}
 
+	public void setEmi(BigDecimal emi) {
+		this.emi = emi;
+	}
+
+	public BigDecimal getInterestRate() {
+		return this.interestRate;
+	}
+
+	public void setInterestRate(BigDecimal interestRate) {
+		this.interestRate = interestRate;
+	}
+
+	public BigDecimal getLoanAmount() {
+		return this.loanAmount;
+	}
+
+	public void setLoanAmount(BigDecimal loanAmount) {
+		this.loanAmount = loanAmount;
+	}
+
+	public Date getLoanEndDate() {
+		return this.loanEndDate;
+	}
+
+	public void setLoanEndDate(Date loanEndDate) {
+		this.loanEndDate = loanEndDate;
+	}
+
+	public Date getLoanStartDate() {
+		return this.loanStartDate;
+	}
+
+	public void setLoanStartDate(Date loanStartDate) {
+		this.loanStartDate = loanStartDate;
+	}
+
+	public String getLoanStatus() {
+		return this.loanStatus;
+	}
 
 	public void setLoanStatus(String loanStatus) {
 		this.loanStatus = loanStatus;
 	}
 
-
-	public Date getLoanStartingDate() {
-		return loanStartingDate;
+	public BigDecimal getProcessingFee() {
+		return this.processingFee;
 	}
 
-
-	public void setLoanStartingDate(Date loanStartingDate) {
-		this.loanStartingDate = loanStartingDate;
+	public void setProcessingFee(BigDecimal processingFee) {
+		this.processingFee = processingFee;
 	}
 
-
-	public Date getLoanEndingDate() {
-		return loanEndingDate;
+	public BigDecimal getTenure() {
+		return this.tenure;
 	}
 
-
-	public void setLoanEndingDate(Date loanEndingDate) {
-		this.loanEndingDate = loanEndingDate;
+	public void setTenure(BigDecimal tenure) {
+		this.tenure = tenure;
 	}
 
-	public Set<Vehicle> getVehicle() {
-		return vehicle;
+	public List<Account> getAccounts() {
+		return this.accounts;
 	}
 
+	public void setAccounts(List<Account> accounts) {
+		this.accounts = accounts;
+	}
 
-	public void setVehicle(Set<Vehicle> vehicle) {
+	public Account addAccount(Account account) {
+		getAccounts().add(account);
+		account.setLoan(this);
+
+		return account;
+	}
+
+	public Account removeAccount(Account account) {
+		getAccounts().remove(account);
+		account.setLoan(null);
+
+		return account;
+	}
+
+	public Vehicle getVehicle() {
+		return this.vehicle;
+	}
+
+	public void setVehicle(Vehicle vehicle) {
 		this.vehicle = vehicle;
 	}
 
-
-	public User getUserid() {
-		return userid;
-	}
-	
-	public void setUserid(User userid) {
-		this.userid = userid;
+	public List<UserTable> getUserTables() {
+		return this.userTables;
 	}
 
-	public Account getAccountnumber() {
-		return accountnumber;
+	public void setUserTables(List<UserTable> userTables) {
+		this.userTables = userTables;
 	}
 
+	public UserTable addUserTable(UserTable userTable) {
+		getUserTables().add(userTable);
+		userTable.setLoan(this);
 
-	public void setAccountnumber(Account accountnumber) {
-		this.accountnumber = accountnumber;
+		return userTable;
 	}
-	
+
+	public UserTable removeUserTable(UserTable userTable) {
+		getUserTables().remove(userTable);
+		userTable.setLoan(null);
+
+		return userTable;
+	}
+
 }
-
