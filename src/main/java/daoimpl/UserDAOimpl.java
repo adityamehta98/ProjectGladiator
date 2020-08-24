@@ -44,7 +44,7 @@ public class UserDAOimpl implements UserDAO {
 		System.out.println("Result is :"+q.getSingleResult());
 		return (int)q.getSingleResult();
 	}
-
+	//test
 	@Override
 	public User getUserByEmail(String email) {
 		// TODO Auto-generated method stub
