@@ -59,13 +59,13 @@ public class RepositoryClass implements RepositoryInterface {
 	@Override
 	public boolean isUserPresent(String userEmail) {
 		return (long) em
-				.createQuery("select count(u.id) from Customer u where u.email = :em ")
+				.createQuery("select count(u.userId) from UserTable u where u.userEmail = :em ")
 				.setParameter("em", userEmail)
 				.getSingleResult() == 1 ? true : false;
 	}
 	
 	@Override
-	public UserTable findById(int userId) {
+	public UserTable findById(long userId) {
 		return em.find(UserTable.class, userId);
 	}
 	//--------------------------------------------------------------
