@@ -2,6 +2,10 @@ package daoimpl;
 
 import java.sql.Date;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+
 import dao.UserDAO;
 import model.User;
 
@@ -10,8 +14,11 @@ public class UserDAOImplTest {
 	public static void main(String[] args) {
 		System.out.println("We are here");
         UserDAO UserDao = new UserDAOimpl();
-        
-        
+        EntityManagerFactory emf=Persistence.createEntityManagerFactory("");  
+        EntityManager em=emf.createEntityManager();  
+          
+em.getTransaction().begin(); 
+
         User l2 = new User();
         l2.setUserid(1000);
         l2.setName("Aditya");
@@ -24,7 +31,12 @@ public class UserDAOImplTest {
         l2.setCity("Jaipur");
         l2.setZip(302001);
         UserDao.createUser(l2);
-
+        System.out.println("We are again here!");
+        em.persist(l2);
+        em.getTransaction().commit();  
+        
+        emf.close();  
+        em.close(); 
 	}
 
 }
