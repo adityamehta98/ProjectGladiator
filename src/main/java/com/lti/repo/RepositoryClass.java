@@ -17,19 +17,65 @@ public class RepositoryClass implements RepositoryInterface {
 	@PersistenceContext
 	EntityManager em;
 	
-
-	@Override
-	@Transactional
-	public long registerAdmin(Admin admin) {
-		Admin a = em.merge(admin);
-		return a.getAdminId();
-	}
-
+	//UserDAOImpl
+	//-----------------------------------------------------------------
 	@Override
 	@Transactional
 	public long registerUser(UserTable user) {
 		UserTable u = em.merge(user);
 		return u.getUserId();
+	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<UserTable> fetchAllUsers() {
+		return em
+				.createNamedQuery("UserTable.findAll")
+				.getResultList();
+	}
+	
+	@Override
+	public UserTable findUserByUserID(long userId) {
+		UserTable res = em.find(UserTable.class, userId);
+		return res;
+	}
+
+	@Override
+	public long findUserIdByEmailAndPassword(String userEmail, String userPass) {
+		return (long) em
+				.createQuery("select id from UserTable where userEmail = :em and userPass = :pw ")
+				.setParameter("em", userEmail)
+				.setParameter("pw", userPass)
+				.getSingleResult();
+	}
+
+	@Override
+	@Transactional
+	public void removeUserByUserID(long userId) {
+		UserTable user = em.find(UserTable.class, userId);
+		em.remove(user);
+	}
+	
+	@Override
+	public boolean isUserPresent(String userEmail) {
+		return (long) em
+				.createQuery("select count(u.userId) from UserTable u where u.userEmail = :em ")
+				.setParameter("em", userEmail)
+				.getSingleResult() == 1 ? true : false;
+	}
+	
+	@Override
+	public UserTable findById(long userId) {
+		return em.find(UserTable.class, userId);
+	}
+	//--------------------------------------------------------------
+	//AdminDAOImpl
+	
+	@Override
+	@Transactional
+	public long registerAdmin(Admin admin) {
+		Admin a = em.merge(admin);
+		return a.getAdminId();
 	}
 
 	@Override
@@ -53,9 +99,7 @@ public class RepositoryClass implements RepositoryInterface {
 	public long registerVehicle(Vehicle vehicle) {
 		Vehicle v = em.merge(vehicle);
 		return v.getVehicleId();
-	}
-	
-	
+	}	
 	
 	//Added these methods for loan
 

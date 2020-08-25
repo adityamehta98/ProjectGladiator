@@ -8,6 +8,12 @@ public interface RepositoryInterface {
 
 	//User
 	public long registerUser(UserTable user);
+	public List<UserTable> fetchAllUsers();
+	boolean isUserPresent(String userEmail);
+	public UserTable findById(long userId);
+	public UserTable findUserByUserID(long userId);
+	public long findUserIdByEmailAndPassword(String userEmail, String userPass);
+	public void removeUserByUserID(long userId);
 	
 	//Admin
 	public long registerAdmin(Admin admin);
@@ -21,11 +27,6 @@ public interface RepositoryInterface {
 	//Vehicle
 	public long registerVehicle(Vehicle vehicle);
 	
-	/*
-	 * 
-	 * Some CRUD Operations For Loan
-	 * 
-	 */
 	
 	public List<Loan> viewAllLoans();
 	

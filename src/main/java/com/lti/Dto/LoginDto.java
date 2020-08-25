@@ -1,26 +1,23 @@
 package com.lti.Dto;
 
 public class LoginDto {
-
-	private int userId;
-	private String userPassword;
-	
-	public int getuserId() {
-		return userId;
+	private String email;
+	private String password;
+	public String getEmail() {
+		return email;
 	}
-	public void setuserId(int userId) {
-		this.userId = userId;
+	public void setEmail(String email) {
+		this.email = email;
 	}
-	public String getuserPassword() {
-		return userPassword;
+	public String getPassword() {
+		return password;
 	}
-	public void setuserPassword(String userPassword) {
-		this.userPassword = userPassword;
+	public void setPassword(String password) {
+		this.password = password;
 	}
-	
-	
-	
-	
-	
+	@Override
+	public String toString() {
+		return "Login [email=" + email + ", password=" + password + "]";
+	}
 	
 }
