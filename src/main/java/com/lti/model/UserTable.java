@@ -15,7 +15,7 @@ import java.math.BigDecimal;
 @NamedQuery(name="UserTable.findAll", query="SELECT u FROM UserTable u")
 public class UserTable implements Serializable {
 	private static final long serialVersionUID = 1L;
-
+	//new
 	@Id
 	@SequenceGenerator(name = "User_Id_Seq", sequenceName = "User_Id_Seq", allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "User_Id_Seq")
