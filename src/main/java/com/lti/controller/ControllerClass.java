@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.lti.controller.ControllerClass.Status.StatusType;
-import com.lti.Dto.LoginDto;
+import com.lti.Dto.*;
 import com.lti.model.UserTable;
 import com.lti.exception.CustomerServiceException;
 import com.lti.service.UserService;
@@ -20,15 +20,19 @@ public class ControllerClass {
 	private UserService userService;
 	
 	@PostMapping("/register")
-	public Status register(@RequestBody UserTable user) {
-		try {
+	public Status register(@RequestBody UserTable user) 
+	{
+		try 
+		{
 			userService.register(user);
 			Status status=new Status();
 			status.setStatus(StatusType.SUCCESS);
 			status.setMessage("Registration Successful");
 			return status;
 		}
-		catch (CustomerServiceException e) {
+		
+		catch (CustomerServiceException e) 
+		{
 			Status status=new Status();
 			status.setStatus(StatusType.FAILURE);
 			status.setMessage(e.getMessage());
@@ -37,7 +41,7 @@ public class ControllerClass {
 	}
 	
 	
-	@PostMapping("/login")
+	@PostMapping("/loginuser")
 	public LoginStatus login(@RequestBody LoginDto loginDto) {
 		try {
 			UserTable user = userService.login(loginDto.getEmail(), loginDto.getPassword());

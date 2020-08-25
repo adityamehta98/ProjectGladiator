@@ -13,6 +13,7 @@ import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabas
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.Rollback;
 
+import com.lti.model.Loan;
 import com.lti.model.UserTable;
 import com.lti.repo.RepositoryInterface;
 
@@ -46,7 +47,7 @@ public class NewProjectApplicationTests {
 //		user.setUserNameFirst("Park");
 //		user.setUserNameLast("Jimin");
 //		user.setUserNameMiddle("");
-//		user.setUserAge(BigDecimal.valueOf(24));
+//		user.setUserAge(24);
 //		user.setUserGender("Male");
 //		user.setUserAddress("Busan, South Korea");
 //		user.setUserEmail("babyg@gmail.com");
@@ -108,15 +109,16 @@ public class NewProjectApplicationTests {
 //	void registerLoan() {
 //		Loan loan=new Loan();
 //		loan.setLoanId(1);
-//		loan.setLoanAmount(BigDecimal.valueOf(50000));
-//		loan.setInterestRate(BigDecimal.valueOf(9));
-//		loan.setProcessingFee(BigDecimal.valueOf(1000));
-//		loan.setEmi(BigDecimal.valueOf(5000));
-//		loan.setTenure(BigDecimal.valueOf(36));
+//		loan.setLoanAmount(50000);
+//		loan.setInterestRate(9);
+//		loan.setProcessingFee(1000);
+//		loan.setEmi(5000);
+//		loan.setTenure(36);
 //		loan.setApplicationStatus("Complete");
 //		loan.setLoanStatus("New");
 //		loan.setLoanStartDate(Date.valueOf("2018-09-12"));
 //		loan.setLoanEndDate(Date.valueOf("2021-09-12"));
+//		loan.setLoantype("Two-Wheeler");
 //		System.out.println(repo.registerLoan(loan));
 //	}
 //	

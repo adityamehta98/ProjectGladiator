@@ -1,48 +1,90 @@
 package com.lti.Dto;
 
-public class userDto {
-	public userDto(String uName, String uEmail, String uPassword, String uAddress, int uPhone) {
+public class userDto 
+{
+	public userDto(String userNameFirst, String userEmail, String userNameMiddle, String userNameLast, String userPass, String userAddress, int userAge, String userGender, String userType, String userZip) {
 		super();
-		this.uName = uName;
-		this.uEmail = uEmail;
-		this.uPassword = uPassword;
-		this.uAddress = uAddress;
-		this.uPhone = uPhone;
+		this.userNameFirst = userNameFirst;
+		this.userNameMiddle = userNameMiddle;
+		this.userNameLast = userNameLast;
+		this.userEmail = userEmail;
+		this.userPass = userPass;
+		this.userAddress = userAddress;
+		this.userAge = userAge;
+		this.userGender = userGender;
+		this.userType = userType;
+		this.userZip = userZip;
 	}
-	public String getuName() {
-		return uName;
+	
+	private String userNameFirst;
+	private String userNameMiddle;
+	private String userNameLast;
+	private String userEmail;
+	private String userPass;
+	private String userAddress;
+	private int userAge;
+	private String userGender;
+	private String userType;
+	private String userZip;
+	public String getUserNameFirst() {
+		return userNameFirst;
 	}
-	public void setuName(String uName) {
-		this.uName = uName;
+	public void setUserNameFirst(String userNameFirst) {
+		this.userNameFirst = userNameFirst;
 	}
-	public String getuEmail() {
-		return uEmail;
+	public String getUserNameMiddle() {
+		return userNameMiddle;
 	}
-	public void setuEmail(String uEmail) {
-		this.uEmail = uEmail;
+	public void setUserNameMiddle(String userNameMiddle) {
+		this.userNameMiddle = userNameMiddle;
 	}
-	public String getuPassword() {
-		return uPassword;
+	public String getUserNameLast() {
+		return userNameLast;
 	}
-	public void setuPassword(String uPassword) {
-		this.uPassword = uPassword;
+	public void setUserNameLast(String userNameLast) {
+		this.userNameLast = userNameLast;
 	}
-	public String getuAddress() {
-		return uAddress;
+	public String getUserEmail() {
+		return userEmail;
 	}
-	public void setuAddress(String uAddress) {
-		this.uAddress = uAddress;
+	public void setUserEmail(String userEmail) {
+		this.userEmail = userEmail;
 	}
-	public int getuPhone() {
-		return uPhone;
+	public String getUserPass() {
+		return userPass;
 	}
-	public void setuPhone(int uPhone) {
-		this.uPhone = uPhone;
+	public void setUserPass(String userPass) {
+		this.userPass = userPass;
 	}
-	private String uName;
-	private String uEmail;
-	private String uPassword;
-	private String uAddress;
-	private int uPhone;
+	public String getUserAddress() {
+		return userAddress;
+	}
+	public void setUserAddress(String userAddress) {
+		this.userAddress = userAddress;
+	}
+	public int getUserAge() {
+		return userAge;
+	}
+	public void setUserAge(int userAge) {
+		this.userAge = userAge;
+	}
+	public String getUserGender() {
+		return userGender;
+	}
+	public void setUserGender(String userGender) {
+		this.userGender = userGender;
+	}
+	public String getUserType() {
+		return userType;
+	}
+	public void setUserType(String userType) {
+		this.userType = userType;
+	}
+	public String getUserZip() {
+		return userZip;
+	}
+	public void setUserZip(String userZip) {
+		this.userZip = userZip;
+	}
 	
 }
