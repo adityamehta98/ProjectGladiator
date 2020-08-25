@@ -148,8 +148,4 @@ public class RepositoryClass implements RepositoryInterface {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
-	
-	
-
 }
