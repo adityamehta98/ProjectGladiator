@@ -131,7 +131,6 @@ public class RepositoryClass implements RepositoryInterface {
 				.getSingleResult();
 	}
 			
-		
 	@SuppressWarnings("unchecked")
 	@Override
 	@Transactional
