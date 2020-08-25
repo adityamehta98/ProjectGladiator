@@ -15,6 +15,7 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.test.annotation.Rollback;
 
 import com.lti.model.Loan;
+import com.lti.model.Admin;
 import com.lti.model.UserTable;
 import com.lti.repo.RepositoryInterface;
 
@@ -28,11 +29,11 @@ public class NewProjectApplicationTests {
 	@Autowired
 	private RepositoryInterface repo;
 	
-	@Test
-	void getApprovedUsers() {
-		List<UserTable> list = repo.allApprovedUsers();
-		System.out.println(list.toString());
-	}
+//	@Test
+//	void getApprovedUsers() {
+//		List<UserTable> list = repo.allApprovedUsers();
+//		System.out.println(list.toString());
+//	}
 	
 //	@Test
 //	void getAllRegisteredUsers() {
@@ -103,7 +104,7 @@ public class NewProjectApplicationTests {
 //		admin.setAdminNameLast("Karki");
 //		admin.setAdminGender("Female");
 //		admin.setAdminPass("abcd1234");
-//		admin.setAdminAge(BigDecimal.valueOf(21));
+//		admin.setAdminAge(21);
 //		System.out.println(repo.registerAdmin(admin));
 //	}
 //	

@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
+import com.lti.model.Admin;
 import com.lti.model.UserTable;
 import com.lti.exception.CustomerServiceException;
 import com.lti.repo.RepositoryInterface;
@@ -32,6 +33,21 @@ public class UserServiceImpl implements UserService {
 			int id = (int) repointerface.findUserIdByEmailAndPassword(userEmail, password);
 			UserTable user = repointerface.findUserByUserID(id);
 			return user;
+		}
+		catch(EmptyResultDataAccessException e) {
+			throw new CustomerServiceException("Incorrect Username/Password");
+		}
+	}
+
+	@Override
+	public Admin loginadmin(String adminEmail, String adminPassword) {
+		try {
+			if(!repointerface.isAdminPresent(adminEmail))
+				throw new CustomerServiceException("Admin not registered!");
+			
+			int id = (int) repointerface.findAdminIdByEmailAndPassword(adminEmail, adminPassword);
+			Admin admin = repointerface.findAdminById(id);
+			return admin;
 		}
 		catch(EmptyResultDataAccessException e) {
 			throw new CustomerServiceException("Incorrect Username/Password");

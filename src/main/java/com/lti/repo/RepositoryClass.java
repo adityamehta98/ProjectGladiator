@@ -125,19 +125,18 @@ public class RepositoryClass implements RepositoryInterface {
 	@Transactional
 	public long findAdminIdByEmailAndPassword(String adminEmail, String adminPass) {
 		return (long) em
-				.createQuery("select id from Admin where adminEmail = :email and adminPass = :pass ")
-				.setParameter("email", adminEmail)
-				.setParameter("pass", adminPass)
+				.createQuery("select id from Admin where adminEmail = :em and adminPass = :pw ")
+				.setParameter("em", adminEmail)
+				.setParameter("pw", adminPass)
 				.getSingleResult();
 	}
-	
+
 	@Override
 	public Admin findAdminById(long adminId) {
 		return em.find(Admin.class, adminId);
 	}
-	
-	//DASHBOARD
 			
+		
 	@SuppressWarnings("unchecked")
 	@Override
 	@Transactional
@@ -173,7 +172,7 @@ public class RepositoryClass implements RepositoryInterface {
 				.createQuery("select u from UserTable u where u.loan = (select l.loanId from Loan l where l.applicationStatus = 'Rejected')")
 				.getResultList();
 	}
-	
+		
 	@Override
 	@Transactional
 	public void approveLoan(long loanId) {
@@ -239,8 +238,6 @@ public class RepositoryClass implements RepositoryInterface {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
-
 
 
 
