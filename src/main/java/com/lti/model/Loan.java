@@ -183,14 +183,14 @@ public class Loan implements Serializable {
 
 	public UserTable addUserTable(UserTable userTable) {
 		getUserTables().add(userTable);
-		userTable.setLoanId(this);
+		userTable.setLoan(this);
 
 		return userTable;
 	}
 
 	public UserTable removeUserTable(UserTable userTable) {
 		getUserTables().remove(userTable);
-		userTable.setLoanId(null);
+		userTable.setLoan(null);
 
 		return userTable;
 	}

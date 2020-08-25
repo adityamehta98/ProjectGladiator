@@ -24,18 +24,16 @@ public interface RepositoryInterface {
 	public long registerAdmin(Admin admin); //register an admin
 	boolean isAdminPresent(String adminEmail); //admin login (1)
 	public long loginAdmin(String adminEmail, String adminPass); // admin login (2)
+	
 	public List<UserTable> fetchAllRegisteredUsers(); // find all registered users 
 
 	public List<UserTable> allApprovedUsers(); //approved user list
 	public List<UserTable> allPendingUsers(); //pending user list
 	public List<UserTable> allRejectedUsers(); //rejected user list
 	public void approveLoan(long loanId); //for loan's approval
+	public void rejectLoan(long loanId); //rejecting loan!
 	
 	
-	//Administration
-	
-
-	//Vehicle
 	
 	
 	

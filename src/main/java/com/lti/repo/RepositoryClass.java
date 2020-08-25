@@ -146,8 +146,7 @@ public class RepositoryClass implements RepositoryInterface {
 	@Transactional
 	public List<UserTable> allApprovedUsers() {
 		return em
-				.createQuery("select u from UserTable u where u.loanId = (select l.loanId from loan l where l.applicationStatus = :status)")
-				.setParameter("status", "Approved")
+				.createQuery("select u from UserTable u where u.loan = (select l.loanId from Loan l where l.applicationStatus = 'Approved')")
 				.getResultList();
 	}
 		
@@ -156,8 +155,7 @@ public class RepositoryClass implements RepositoryInterface {
 	@Transactional
 	public List<UserTable> allPendingUsers() {
 		return em
-				.createQuery("select u from UserTable u where u.loanId = (select l.loanId from loan l where l.applicationStatus = :status)")
-				.setParameter("status", "Pending")
+				.createQuery("select u from UserTable u where u.loan = (select l.loanId from Loan l where l.applicationStatus = 'Pending')")
 				.getResultList();
 	}
 		
@@ -166,17 +164,24 @@ public class RepositoryClass implements RepositoryInterface {
 	@Transactional
 	public List<UserTable> allRejectedUsers() {
 		return em
-				.createQuery("select u from UserTable u where u.loanId = (select l.loanId from loan l where l.applicationStatus = :status)")
-				.setParameter("status", "Rejected")
+				.createQuery("select u from UserTable u where u.loan = (select l.loanId from Loan l where l.applicationStatus = 'Rejected')")
 				.getResultList();
 	}
 		
 	@Override
 	@Transactional
 	public void approveLoan(long loanId) {
-		em.createQuery("update Loan set applicationStatus = :status where loanId =:id ")
-		.setParameter("status", "Approved")
-		.setParameter("id", loanId);
+		em.createQuery("update Loan l set l.applicationStatus = 'Approved' where l.loanId =:id ")
+		.setParameter("id", loanId)
+		.executeUpdate();
+	}
+	
+	@Override
+	@Transactional
+	public void rejectLoan(long loanId) {
+		em.createQuery("update Loan l set l.applicationStatus = 'Rejected' where l.loanId =:id ")
+		.setParameter("id", loanId)
+		.executeUpdate();
 	}
 	
 	//-------------------------------------------------------------

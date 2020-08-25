@@ -61,6 +61,7 @@ public class UserTable implements Serializable {
 	@ManyToOne
 	@JoinColumn(name="LOAN_ID")
 	private Loan loan;
+	
 
 	public UserTable() {
 	}
@@ -173,7 +174,7 @@ public class UserTable implements Serializable {
 		return this.loan;
 	}
 
-	public void setLoanId(Loan loan) {
+	public void setLoan(Loan loan) {
 		this.loan = loan;
 	}
 

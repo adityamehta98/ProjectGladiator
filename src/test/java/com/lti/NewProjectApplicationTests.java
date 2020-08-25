@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase.Replace;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.test.annotation.Rollback;
 
 import com.lti.model.Loan;
@@ -26,28 +27,49 @@ public class NewProjectApplicationTests {
 	
 	@Autowired
 	private RepositoryInterface repo;
-
+	
+	@Test
+	void getApprovedUsers() {
+		List<UserTable> list = repo.allApprovedUsers();
+		System.out.println(list.toString());
+	}
+	
+//	@Test
+//	void getAllRegisteredUsers() {
+//		List<UserTable> list = repo.fetchAllRegisteredUsers();
+//		System.out.println(list.toString());
+//	}
+	
+//	@Test
+//	void reject() {
+//		repo.rejectLoan(1);
+//	}
+	
+//		@Test
+//		void approve() {
+//			repo.approveLoan(1);
+//		}
 //	
 //	@Test
 //	void fetchAll() {
 //		System.out.println(repo.fetchAllUsers());
 //	}
 //	
-//	
+//
 //	@Test
 //	void registerUser() {
 //
 //		UserTable user=new UserTable();
-//		user.setUserId(1);
-//		user.setUserNameFirst("Park");
-//		user.setUserNameLast("Jimin");
+//		user.setUserId(2);
+//		user.setUserNameFirst("Min");
+//		user.setUserNameLast("Yoongi");
 //		user.setUserNameMiddle("");
-//		user.setUserAge(24);
+//		user.setUserAge(26);
 //		user.setUserGender("Male");
-//		user.setUserAddress("Busan, South Korea");
-//		user.setUserEmail("babyg@gmail.com");
-//		user.setUserPass("Aditya@123yoonmin");
-//		user.setUserZip("302001");
+//		user.setUserAddress("Daegu, South Korea");
+//		user.setUserEmail("minyoongi@gmail.com");
+//		user.setUserPass("yoonmin");
+//		user.setUserZip("262405");
 //		user.setUserType("New");
 //		repo.registerUser(user);
 //	}
@@ -110,7 +132,7 @@ public class NewProjectApplicationTests {
 //	@Test
 //	void registerLoan() {
 //		Loan loan=new Loan();
-//		loan.setLoanId(1);
+//		loan.setLoanId(2);
 //		loan.setLoanAmount(50000);
 //		loan.setInterestRate(9);
 //		loan.setProcessingFee(100);
