@@ -19,6 +19,7 @@ public class RepositoryClass implements RepositoryInterface {
 	
 	//AccountDAOImpl
 	//-----------------------------------------------------------------
+	
 	@Override
 	@Transactional
 	public long registerUser(UserTable user) {
@@ -68,6 +69,9 @@ public class RepositoryClass implements RepositoryInterface {
 		Admin a = em.merge(admin);
 		return a.getAdminId();
 	}
+	
+	//--------------------------------------------------------------
+	//AcountImpl
 
 	@Override
 	@Transactional
@@ -76,21 +80,23 @@ public class RepositoryClass implements RepositoryInterface {
 		return a.getAccNumber();
 	}
 
-
+	//-------------------------------------------------------------
+	//LoanImpl
+	
 	@Override
 	@Transactional
 	public long registerLoan(Loan loan) {
 		Loan l = em.merge(loan);
 		return l.getLoanId();
 	}
-
-
+	
+	//-------------------------------------------------------------
+	//VehichleImpl
 	@Override
 	@Transactional
 	public long registerVehicle(Vehicle vehicle) {
 		Vehicle v = em.merge(vehicle);
 		return v.getVehicleId();
 	}
-
 
 }

@@ -24,13 +24,13 @@ public class Loan implements Serializable {
 	private String applicationStatus;
 
 	@Column(name="EMI")
-	private BigDecimal emi;
+	private float emi;
 
 	@Column(name="INTEREST_RATE")
-	private BigDecimal interestRate;
+	private float interestRate;
 
 	@Column(name="LOAN_AMOUNT")
-	private BigDecimal loanAmount;
+	private float loanAmount;
 
 	@Temporal(TemporalType.DATE)
 	@Column(name="LOAN_END_DATE")
@@ -80,27 +80,27 @@ public class Loan implements Serializable {
 		this.applicationStatus = applicationStatus;
 	}
 
-	public BigDecimal getEmi() {
+	public float getEmi() {
 		return this.emi;
 	}
 
-	public void setEmi(BigDecimal emi) {
+	public void setEmi(float emi) {
 		this.emi = emi;
 	}
 
-	public BigDecimal getInterestRate() {
+	public float getInterestRate() {
 		return this.interestRate;
 	}
 
-	public void setInterestRate(BigDecimal interestRate) {
+	public void setInterestRate(float interestRate) {
 		this.interestRate = interestRate;
 	}
 
-	public BigDecimal getLoanAmount() {
+	public float getLoanAmount() {
 		return this.loanAmount;
 	}
 
-	public void setLoanAmount(BigDecimal loanAmount) {
+	public void setLoanAmount(float loanAmount) {
 		this.loanAmount = loanAmount;
 	}
 

@@ -26,15 +26,15 @@ public class NewProjectApplicationTests {
 	@Autowired
 	private RepositoryInterface repo;
 	
-	//----------------------------------------------------------------
-	// USER OPERATIONS!
-	
+//----------------------------------------------------------------
+// USER OPERATIONS!
+//	
 //	@Test
 //	void fetchAll() {
 //		System.out.println(repo.fetchAllUsers());
 //	}
-	
-	
+//	
+//	
 //	@Test
 //	void registerUser() {
 //		
@@ -52,27 +52,27 @@ public class NewProjectApplicationTests {
 //		user.setUserType("New");
 //		repo.registerUser(user);
 //	}
-	
+//	
 //	@Test
 //	void removeUser() {
 //		repo.removeUserByUserID(1);
 //	}
-
+//
 //	@Test
 //	void findUserById() {
 //		System.out.println(repo.findUserByUserID(2).toString());
 //	}
-	
+//	
 //	@Test
 //	void findUserIdbyEmailandPass() {
 //		long id = repo.findUserIdByEmailAndPassword("babyg@gmail.com", "Aditya@123yoonmin");
 //		System.out.println("the user id is: " +id);
 //	}
-	
-	//-------------------------------------------------------------
-	//ADMIN OPERATIONS
-	
-	
+//	
+//-------------------------------------------------------------
+//ADMIN OPERATIONS
+//	
+//	
 //	@Test
 //	void registerAdmin() {
 //		Admin admin = new Admin();
@@ -86,7 +86,10 @@ public class NewProjectApplicationTests {
 //		System.out.println(repo.registerAdmin(admin));
 //	}
 //	
-//	
+//----------------------------------------------------------------
+// ACCOUNT OPERATIONS!
+// 
+//
 //	@Test
 //	void registerAccount() {
 //		Account account= new Account();
@@ -101,6 +104,10 @@ public class NewProjectApplicationTests {
 //		System.out.println(repo.registerAccount(account));
 //	}
 //	
+//----------------------------------------------------------------
+//LOAN OPERATIONS!
+//
+//
 //	@Test
 //	void registerLoan() {
 //		Loan loan=new Loan();
@@ -116,6 +123,9 @@ public class NewProjectApplicationTests {
 //		loan.setLoanEndDate(Date.valueOf("2021-09-12"));
 //		System.out.println(repo.registerLoan(loan));
 //	}
+//
+//----------------------------------------------------------------
+//VEHICLE OPERATIONS!
 //	
 //	@Test
 //	void registerVehicle() {

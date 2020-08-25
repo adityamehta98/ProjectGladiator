@@ -13,7 +13,7 @@ public interface RepositoryInterface {
 	public long findUserIdByEmailAndPassword(String userEmail, String userPass);
 	public void removeUserByUserID(long userId);
 	
-	//Admin
+	//Administration
 	public long registerAdmin(Admin admin);
 	
 	//Account
