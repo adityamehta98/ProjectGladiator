@@ -173,7 +173,7 @@ public class RepositoryClass implements RepositoryInterface {
 				.createQuery("select u from UserTable u where u.loan = (select l.loanId from Loan l where l.applicationStatus = 'Rejected')")
 				.getResultList();
 	}
-		
+	
 	@Override
 	@Transactional
 	public void approveLoan(long loanId) {
