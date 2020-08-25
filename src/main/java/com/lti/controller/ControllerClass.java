@@ -1,4 +1,4 @@
-	package com.lti.controller;
+package com.lti.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -8,14 +8,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.lti.controller.ControllerClass.Status.StatusType;
 import com.lti.Dto.*;
-import com.lti.model.UserTable;
+import com.lti.model.*;
 import com.lti.exception.CustomerServiceException;
 import com.lti.service.UserService;
 
 @RestController
 @CrossOrigin
 public class ControllerClass {
-	
 	@Autowired
 	private UserService userService;
 	
@@ -58,7 +57,25 @@ public class ControllerClass {
 			loginStatus.setMessage(e.getMessage());
 			return loginStatus;
 		}
-		
+	}
+	
+	@PostMapping("/loginadmin")
+	public LoginAdminStatus loginadmin(@RequestBody AdminLoginDto adminloginDto) {
+		try {
+			Admin admin = userService.loginadmin(adminloginDto.getEmail(),adminloginDto.getPassword());
+			LoginAdminStatus loginAdminStatus = new LoginAdminStatus();
+			loginAdminStatus.setStatus(StatusType.SUCCESS);
+			loginAdminStatus.setMessage("Login Successful");
+			loginAdminStatus.setAdminId(admin.getAdminId());
+			loginAdminStatus.setAdminNameFirst(admin.getAdminNameFirst());
+			return loginAdminStatus;
+		}
+		catch(CustomerServiceException e) {
+			LoginAdminStatus loginAdminStatus = new LoginAdminStatus();
+			loginAdminStatus.setStatus(StatusType.FAILURE);
+			loginAdminStatus.setMessage(e.getMessage());
+			return loginAdminStatus;
+		}
 	}
 	
 		public static class LoginStatus extends Status {
@@ -77,7 +94,24 @@ public class ControllerClass {
 			public void setUserNameFirst(String name) {
 				this.name = name;
 			}
+		}
+		
+		public static class LoginAdminStatus extends Status {
+			private long adminId;
+			private String adminName;
 			
+			public long getadminId() {
+				return adminId;
+			}
+			public void setAdminId(long adminId) {
+				this.adminId = adminId;
+			}
+			public String getAdminNameFirst() {
+				return adminName;
+			}
+			public void setAdminNameFirst(String adminName) {
+				this.adminName = adminName;
+			}
 		}
 	
 	
