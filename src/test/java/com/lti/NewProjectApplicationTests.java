@@ -28,11 +28,11 @@ public class NewProjectApplicationTests {
 	@Autowired
 	private RepositoryInterface repo;
 	
-	@Test
-	void getApprovedUsers() {
-		List<UserTable> list = repo.allApprovedUsers();
-		System.out.println(list.toString());
-	}
+//	@Test
+//	void getApprovedUsers() {
+//		List<UserTable> list = repo.allApprovedUsers();
+//		System.out.println(list.toString());
+//	}
 	
 //	@Test
 //	void getAllRegisteredUsers() {
