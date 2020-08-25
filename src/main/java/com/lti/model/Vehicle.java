@@ -25,16 +25,16 @@ public class Vehicle implements Serializable {
 	@Column(name="ON_ROAD_PRICE")
 	private BigDecimal onRoadPrice;
 
-	@Column(name="VEHICLE_COLOUR")
+	@Column(name="VEHICLE_COLOUR", length=30)
 	private String vehicleColour;
 
-	@Column(name="VEHICLE_MAKE")
-	private String vehicleMake;
-
-	@Column(name="VEHICLE_MODEL")
+	@Column(name="VEHICLE_NAME", length=30)
+	private String vehicleName;
+	
+	@Column(name="VEHICLE_MODEL", length=30)
 	private String vehicleModel;
 
-	@Column(name="VEHICLE_TYPE")
+	@Column(name="VEHICLE_TYPE", length=30)
 	private String vehicleType;
 
 	@Column(name="VEHICLE_YEAR")
@@ -79,12 +79,12 @@ public class Vehicle implements Serializable {
 		this.vehicleColour = vehicleColour;
 	}
 
-	public String getVehicleMake() {
-		return this.vehicleMake;
+	public String getVehicleName() {
+		return this.vehicleName;
 	}
 
-	public void setVehicleMake(String vehicleMake) {
-		this.vehicleMake = vehicleMake;
+	public void setVehicleName(String vehicleName) {
+		this.vehicleName = vehicleName;
 	}
 
 	public String getVehicleModel() {

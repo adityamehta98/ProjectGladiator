@@ -17,6 +17,8 @@ public class UserTable implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@SequenceGenerator(name = "User_Id_Seq", sequenceName = "User_Id_Seq", allocationSize = 1)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "User_Id_Seq")
 	@Column(name="USER_ID")
 	private long userId;
 
@@ -24,7 +26,7 @@ public class UserTable implements Serializable {
 	private String userAddress;
 
 	@Column(name="USER_AGE")
-	private BigDecimal userAge;
+	private int userAge;
 
 	@Column(name="USER_EMAIL", length=30)
 	private String userEmail;
@@ -87,11 +89,11 @@ public class UserTable implements Serializable {
 		this.userAddress = userAddress;
 	}
 
-	public BigDecimal getUserAge() {
+	public int getUserAge() {
 		return this.userAge;
 	}
 
-	public void setUserAge(BigDecimal userAge) {
+	public void setUserAge(int userAge) {
 		this.userAge = userAge;
 	}
 

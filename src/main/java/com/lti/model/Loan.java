@@ -15,7 +15,6 @@ import java.util.List;
 @NamedQuery(name="Loan.findAll", query="SELECT l FROM Loan l")
 public class Loan implements Serializable {
 	private static final long serialVersionUID = 1L;
-
 	@Id
 	@Column(name="LOAN_ID")
 	private long loanId;
@@ -44,10 +43,14 @@ public class Loan implements Serializable {
 	private String loanStatus;
 
 	@Column(name="PROCESSING_FEE")
-	private BigDecimal processingFee;
+	private float processingFee;
+	
+	@Column(name="TENURE")
+	private float tenure;
 
-	private BigDecimal tenure;
-
+	@Column(name="LOAN_TYPE", length=30)
+	private String loantype;
+	
 	//bi-directional many-to-one association to Account
 	@OneToMany(mappedBy="loan")
 	private List<Account> accounts;
@@ -128,19 +131,19 @@ public class Loan implements Serializable {
 		this.loanStatus = loanStatus;
 	}
 
-	public BigDecimal getProcessingFee() {
+	public float getProcessingFee() {
 		return this.processingFee;
 	}
 
-	public void setProcessingFee(BigDecimal processingFee) {
+	public void setProcessingFee(float processingFee) {
 		this.processingFee = processingFee;
 	}
 
-	public BigDecimal getTenure() {
+	public float getTenure() {
 		return this.tenure;
 	}
 
-	public void setTenure(BigDecimal tenure) {
+	public void setTenure(float tenure) {
 		this.tenure = tenure;
 	}
 
@@ -194,6 +197,14 @@ public class Loan implements Serializable {
 		userTable.setLoan(null);
 
 		return userTable;
+	}
+
+	public String getLoantype() {
+		return loantype;
+	}
+
+	public void setLoantype(String loantype) {
+		this.loantype = loantype;
 	}
 
 }

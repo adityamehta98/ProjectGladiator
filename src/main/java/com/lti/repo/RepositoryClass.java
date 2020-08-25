@@ -17,9 +17,8 @@ public class RepositoryClass implements RepositoryInterface {
 	@PersistenceContext
 	EntityManager em;
 	
-	//AccountDAOImpl
+	//UserDAOImpl
 	//-----------------------------------------------------------------
-	
 	@Override
 	@Transactional
 	public long registerUser(UserTable user) {
@@ -69,9 +68,23 @@ public class RepositoryClass implements RepositoryInterface {
 		Admin a = em.merge(admin);
 		return a.getAdminId();
 	}
+
+
+	@Override
+	public boolean isUserPresent(String userEmail) {
+		return (long) em
+				.createQuery("select count(u.userId) from UserTable u where u.userEmail = :em ")
+				.setParameter("em", userEmail)
+				.getSingleResult() == 1 ? true : false;
+	}
 	
+	@Override
+	public UserTable findById(long userId) {
+		return em.find(UserTable.class, userId);
+	}
 	//--------------------------------------------------------------
-	//AcountImpl
+	//AdminDAOImpl
+	
 
 	@Override
 	@Transactional
@@ -98,5 +111,6 @@ public class RepositoryClass implements RepositoryInterface {
 		Vehicle v = em.merge(vehicle);
 		return v.getVehicleId();
 	}
+
 
 }

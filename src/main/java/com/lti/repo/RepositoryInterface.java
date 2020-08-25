@@ -9,6 +9,9 @@ public interface RepositoryInterface {
 	//User
 	public long registerUser(UserTable user);
 	public List<UserTable> fetchAllUsers();
+
+	boolean isUserPresent(String userEmail);
+	public UserTable findById(long userId);
 	public UserTable findUserByUserID(long userId);
 	public long findUserIdByEmailAndPassword(String userEmail, String userPass);
 	public void removeUserByUserID(long userId);
