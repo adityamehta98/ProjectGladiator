@@ -56,7 +56,7 @@ public class NewProjectApplicationTests {
 //		user.setUserType("New");
 //		repo.registerUser(user);
 //	}
-	
+//AllUP!
 //	@Test
 //	void removeUser() {
 //		repo.removeUserByUserID(1);
