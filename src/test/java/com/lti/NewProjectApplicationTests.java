@@ -40,8 +40,8 @@ public class NewProjectApplicationTests {
 	
 	
 //	@Test
-//	void registerUser() {
-//		
+//	void registerUser() 
+//	{	
 //		UserTable user=new UserTable();
 //		user.setUserId(2);
 //		user.setUserNameFirst("Park");
