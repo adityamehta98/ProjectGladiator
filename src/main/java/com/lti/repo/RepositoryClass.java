@@ -110,7 +110,53 @@ public class RepositoryClass implements RepositoryInterface {
 	public long registerVehicle(Vehicle vehicle) {
 		Vehicle v = em.merge(vehicle);
 		return v.getVehicleId();
+	}	
+	
+	//Added these methods for loan
+
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	@Transactional
+	public List<Loan> viewAllLoans() {
+		return em
+				.createNamedQuery("Loan.findAll")
+				.getResultList();
+	}
+/*
+	@Override
+	@Transactional
+	public Loan retrieveLoanByloanType(String loan) {
+		return em.find(Loan.class, loanType);
+	}
+	
+*/
+
+	@Override
+	@Transactional
+	public Loan getLoanById(long loanId) {
+		return em.find(Loan.class, loanId);
 	}
 
+	@Override
+	@Transactional
+	public void removeLoanById(long loanId) {
+		Loan loan = em.find(Loan.class, loanId);
+		em.remove(loan);
+	}
 
+	@Override
+	@Transactional
+	public void removeLoanByApplicationStatus(String applicationStatus) {
+		em
+		.createQuery("delete from Loan where applicationStatus = :appStatus")
+		.setParameter("appStatus", applicationStatus);
+	}
+
+	@Override
+	@Transactional
+	public Loan retrieveLoanByloanType(String loan) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

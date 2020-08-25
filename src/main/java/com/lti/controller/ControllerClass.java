@@ -15,7 +15,6 @@ import com.lti.service.UserService;
 @RestController
 @CrossOrigin
 public class ControllerClass {
-	
 	@Autowired
 	private UserService userService;
 	
