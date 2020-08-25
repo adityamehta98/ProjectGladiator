@@ -123,12 +123,17 @@ public class RepositoryClass implements RepositoryInterface {
 
 	@Override
 	@Transactional
-	public long loginAdmin(String adminEmail, String adminPass) {
+	public long findAdminIdByEmailAndPassword(String adminEmail, String adminPass) {
 		return (long) em
-				.createQuery("select id from Admin where adminEmail = :email and adminPass = :pass ")
-				.setParameter("email", adminEmail)
-				.setParameter("pass", adminPass)
+				.createQuery("select id from Admin where adminEmail = :em and adminPass = :pw ")
+				.setParameter("em", adminEmail)
+				.setParameter("pw", adminPass)
 				.getSingleResult();
+	}
+
+	@Override
+	public Admin findAdminById(long adminId) {
+		return em.find(Admin.class, adminId);
 	}
 			
 		
