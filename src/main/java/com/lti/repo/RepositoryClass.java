@@ -123,13 +123,20 @@ public class RepositoryClass implements RepositoryInterface {
 
 	@Override
 	@Transactional
-	public long loginAdmin(String adminEmail, String adminPass) {
+	public long findAdminIdByEmailAndPassword(String adminEmail, String adminPass) {
 		return (long) em
 				.createQuery("select id from Admin where adminEmail = :email and adminPass = :pass ")
 				.setParameter("email", adminEmail)
 				.setParameter("pass", adminPass)
 				.getSingleResult();
 	}
+	
+	@Override
+	public Admin findAdminById(long adminId) {
+		return em.find(Admin.class, adminId);
+	}
+	
+	//DASHBOARD
 			
 	@SuppressWarnings("unchecked")
 	@Override
@@ -232,6 +239,8 @@ public class RepositoryClass implements RepositoryInterface {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+
 
 
 
