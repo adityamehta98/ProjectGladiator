@@ -20,7 +20,7 @@ public class Admin implements Serializable {
 	private long adminId;
 
 	@Column(name="ADMIN_AGE")
-	private BigDecimal adminAge;
+	private int adminAge;
 
 	@Column(name="ADMIN_EMAIL", length=30)
 	private String adminEmail;
@@ -48,11 +48,11 @@ public class Admin implements Serializable {
 		this.adminId = adminId;
 	}
 
-	public BigDecimal getAdminAge() {
+	public int getAdminAge() {
 		return this.adminAge;
 	}
 
-	public void setAdminAge(BigDecimal adminAge) {
+	public void setAdminAge(int adminAge) {
 		this.adminAge = adminAge;
 	}
 
