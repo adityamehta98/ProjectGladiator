@@ -285,7 +285,7 @@ public class NewProjectApplicationTests {
 //		loan.setLoantype("Two-Wheeler");
 //		System.out.println(repo.registerLoan(loan));
 //	}
-//	
+//	NewUP
 //	@Test
 //	void registerVehicle() {
 //		Vehicle vehicle=new Vehicle();
