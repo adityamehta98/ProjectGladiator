@@ -6,26 +6,35 @@ import com.lti.model.*;
 
 public interface RepositoryInterface {
 
-	//User
-	public long registerUser(UserTable user);
-	public List<UserTable> fetchAllUsers();
-	boolean isUserPresent(String userEmail);
-	public UserTable findById(long userId);
-	public UserTable findUserByUserID(long userId);
-	public long findUserIdByEmailAndPassword(String userEmail, String userPass);
-	public void removeUserByUserID(long userId);
+	public long registerUser(UserTable user); //user registration 
+	boolean isUserPresent(String userEmail); //user login (1)
+	public long findUserIdByEmailAndPassword(String userEmail, String userPass); // user login (2)
+	public UserTable findUserByUserID(long userId); //finding user object after login (dashboard use)
+	public void removeUserByUserID(long userId); //remove user 
 	
-	//Admin
-	public long registerAdmin(Admin admin);
 	
-	//Account
-	public String registerAccount(Account account);
+	public String registerAccount(Account account); //create account
+	public long registerVehicle(Vehicle vehicle); //register vehicle
+	public long registerLoan(Loan loan); //apply loan
+	// document method (to-do)
 	
-	//Loan
-	public long registerLoan(Loan loan);
+	//-----------------------------------------------------------------------
+	// admin methods 
 	
-	//Vehicle
-	public long registerVehicle(Vehicle vehicle);
+	public long registerAdmin(Admin admin); //register an admin
+	boolean isAdminPresent(String adminEmail); //admin login (1)
+	public long loginAdmin(String adminEmail, String adminPass); // admin login (2)
+	
+	public List<UserTable> fetchAllRegisteredUsers(); // find all registered users 
+
+	public List<UserTable> allApprovedUsers(); //approved user list
+	public List<UserTable> allPendingUsers(); //pending user list
+	public List<UserTable> allRejectedUsers(); //rejected user list
+	public void approveLoan(long loanId); //for loan's approval
+	public void rejectLoan(long loanId); //rejecting loan!
+	
+	
+	
 	
 	
 	public List<Loan> viewAllLoans();
