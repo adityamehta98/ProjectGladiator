@@ -17,8 +17,9 @@ public class RepositoryClass implements RepositoryInterface {
 	@PersistenceContext
 	EntityManager em;
 	
-	//UserDAOImpl
-	//-----------------------------------------------------------------
+	
+	// User Register Implementation
+
 	@Override
 	@Transactional
 	public long registerUser(UserTable user) {
@@ -26,22 +27,17 @@ public class RepositoryClass implements RepositoryInterface {
 		return u.getUserId();
 	}
 	
-	@SuppressWarnings("unchecked")
-	@Override
-	@Transactional
-	public List<UserTable> fetchAllUsers() {
-		return em
-				.createNamedQuery("UserTable.findAll")
-				.getResultList();
-	}
+	// User Login Implementation
 	
 	@Override
 	@Transactional
-	public UserTable findUserByUserID(long userId) {
-		UserTable res = em.find(UserTable.class, userId);
-		return res;
+	public boolean isUserPresent(String userEmail) {
+		return (long) em
+				.createQuery("select count(u.userId) from UserTable u where u.userEmail = :em ")
+				.setParameter("em", userEmail)
+				.getSingleResult() == 1 ? true : false;
 	}
-
+	
 	@Override
 	@Transactional
 	public long findUserIdByEmailAndPassword(String userEmail, String userPass) {
@@ -51,7 +47,18 @@ public class RepositoryClass implements RepositoryInterface {
 				.setParameter("pw", userPass)
 				.getSingleResult();
 	}
-
+	
+	//Finding User Object After Login (Dashboard Use)
+	
+	@Override
+	@Transactional
+	public UserTable findUserByUserID(long userId) {
+		UserTable res = em.find(UserTable.class, userId);
+		return res;
+	}
+	
+	// Remove User By UserID
+	
 	@Override
 	@Transactional
 	public void removeUserByUserID(long userId) {
@@ -59,8 +66,41 @@ public class RepositoryClass implements RepositoryInterface {
 		em.remove(user);
 	}
 	
-	//--------------------------------------------------------------
-	//AdminDAOImpl
+	
+	// Create Account
+	
+	@Override
+	@Transactional
+	public String registerAccount(Account account) {
+		Account a = em.merge(account);
+		return a.getAccNumber();
+	}
+	
+	// Vehicle Implementation
+	
+	@Override
+	@Transactional
+	public long registerVehicle(Vehicle vehicle) {
+		Vehicle veh = em.merge(vehicle);
+		return veh.getVehicleId();
+	}	
+	
+	// Apply Loan 
+	
+	@Override
+	@Transactional
+	public long registerLoan(Loan loan) {
+		Loan l = em.merge(loan);
+		return l.getLoanId();
+	}
+		
+		
+	// Document Implementation (To be Done)
+		
+		
+//----------------------------------------------------------------------
+		
+	// Admin Registration
 	
 	@Override
 	@Transactional
@@ -69,49 +109,78 @@ public class RepositoryClass implements RepositoryInterface {
 		return a.getAdminId();
 	}
 
-
+		
+	// Admin Login
+	
 	@Override
-	public boolean isUserPresent(String userEmail) {
+	@Transactional
+	public boolean isAdminPresent(String adminEmail) {
 		return (long) em
-				.createQuery("select count(u.userId) from UserTable u where u.userEmail = :em ")
-				.setParameter("em", userEmail)
+				.createQuery("select count(adminId) from Admin where adminEmail = :email ")
+				.setParameter("email", adminEmail)
 				.getSingleResult() == 1 ? true : false;
 	}
-	
-	@Override
-	public UserTable findById(long userId) {
-		return em.find(UserTable.class, userId);
-	}
-	//--------------------------------------------------------------
-	//AdminDAOImpl
-	
 
 	@Override
 	@Transactional
-	public String registerAccount(Account account) {
-		Account a = em.merge(account);
-		return a.getAccNumber();
+	public long loginAdmin(String adminEmail, String adminPass) {
+		return (long) em
+				.createQuery("select id from Admin where adminEmail = :email and adminPass = :pass ")
+				.setParameter("email", adminEmail)
+				.setParameter("pass", adminPass)
+				.getSingleResult();
 	}
-
-	//-------------------------------------------------------------
-	//LoanImpl
-	
+			
+		
+	@SuppressWarnings("unchecked")
 	@Override
 	@Transactional
-	public long registerLoan(Loan loan) {
-		Loan l = em.merge(loan);
-		return l.getLoanId();
-	}
-	
-	//-------------------------------------------------------------
-	//VehichleImpl
-	@Override
-	@Transactional
-	public long registerVehicle(Vehicle vehicle) {
-		Vehicle v = em.merge(vehicle);
-		return v.getVehicleId();
+	public List<UserTable> fetchAllRegisteredUsers() {
+		return em
+				.createNamedQuery("UserTable.findAll")
+				.getResultList();
 	}	
+		
+	@SuppressWarnings("unchecked")
+	@Override
+	@Transactional
+	public List<UserTable> allApprovedUsers() {
+		return em
+				.createQuery("select u from UserTable u where u.loanId = (select l.loanId from loan l where l.applicationStatus = :status)")
+				.setParameter("status", "Approved")
+				.getResultList();
+	}
+		
+	@SuppressWarnings("unchecked")
+	@Override
+	@Transactional
+	public List<UserTable> allPendingUsers() {
+		return em
+				.createQuery("select u from UserTable u where u.loanId = (select l.loanId from loan l where l.applicationStatus = :status)")
+				.setParameter("status", "Pending")
+				.getResultList();
+	}
+		
+	@SuppressWarnings("unchecked")
+	@Override
+	@Transactional
+	public List<UserTable> allRejectedUsers() {
+		return em
+				.createQuery("select u from UserTable u where u.loanId = (select l.loanId from loan l where l.applicationStatus = :status)")
+				.setParameter("status", "Rejected")
+				.getResultList();
+	}
+		
+	@Override
+	@Transactional
+	public void approveLoan(long loanId) {
+		em.createQuery("update Loan set applicationStatus = :status where loanId =:id ")
+		.setParameter("status", "Approved")
+		.setParameter("id", loanId);
+	}
 	
+	//-------------------------------------------------------------
+
 	//Added these methods for loan
 
 	
@@ -159,4 +228,8 @@ public class RepositoryClass implements RepositoryInterface {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+
+
+	
 }

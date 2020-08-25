@@ -6,11 +6,6 @@ import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 
-
-/**
- * The persistent class for the LOAN database table.
- * 
- */
 @Entity
 @NamedQuery(name="Loan.findAll", query="SELECT l FROM Loan l")
 public class Loan implements Serializable {
@@ -39,7 +34,7 @@ public class Loan implements Serializable {
 	@Column(name="LOAN_START_DATE")
 	private Date loanStartDate;
 
-	@Column(name="LOAN_STATUS", length=30)
+	@Column(name="LOAN_STATUS", length=20)
 	private String loanStatus;
 
 	@Column(name="PROCESSING_FEE")
@@ -48,7 +43,7 @@ public class Loan implements Serializable {
 	@Column(name="TENURE")
 	private float tenure;
 
-	@Column(name="LOAN_TYPE", length=30)
+	@Column(name="LOAN_TYPE", length=20)
 	private String loantype;
 	
 	//bi-directional many-to-one association to Account
@@ -188,14 +183,14 @@ public class Loan implements Serializable {
 
 	public UserTable addUserTable(UserTable userTable) {
 		getUserTables().add(userTable);
-		userTable.setLoan(this);
+		userTable.setLoanId(this);
 
 		return userTable;
 	}
 
 	public UserTable removeUserTable(UserTable userTable) {
 		getUserTables().remove(userTable);
-		userTable.setLoan(null);
+		userTable.setLoanId(null);
 
 		return userTable;
 	}

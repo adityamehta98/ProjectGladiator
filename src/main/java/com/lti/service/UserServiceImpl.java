@@ -30,7 +30,7 @@ public class UserServiceImpl implements UserService {
 				throw new CustomerServiceException("User not registered!");
 			
 			int id = (int) repointerface.findUserIdByEmailAndPassword(userEmail, password);
-			UserTable user = repointerface.findById(id);
+			UserTable user = repointerface.findUserByUserID(id);
 			return user;
 		}
 		catch(EmptyResultDataAccessException e) {

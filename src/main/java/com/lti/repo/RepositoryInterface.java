@@ -6,27 +6,37 @@ import com.lti.model.*;
 
 public interface RepositoryInterface {
 
-	//User
-	public long registerUser(UserTable user);
-	public List<UserTable> fetchAllUsers();
+	public long registerUser(UserTable user); //user registration 
+	boolean isUserPresent(String userEmail); //user login (1)
+	public long findUserIdByEmailAndPassword(String userEmail, String userPass); // user login (2)
+	public UserTable findUserByUserID(long userId); //finding user object after login (dashboard use)
+	public void removeUserByUserID(long userId); //remove user 
+	
+	
+	public String registerAccount(Account account); //create account
+	public long registerVehicle(Vehicle vehicle); //register vehicle
+	public long registerLoan(Loan loan); //apply loan
+	// document method (to-do)
+	
+	//-----------------------------------------------------------------------
+	// admin methods 
+	
+	public long registerAdmin(Admin admin); //register an admin
+	boolean isAdminPresent(String adminEmail); //admin login (1)
+	public long loginAdmin(String adminEmail, String adminPass); // admin login (2)
+	public List<UserTable> fetchAllRegisteredUsers(); // find all registered users 
 
-	boolean isUserPresent(String userEmail);
-	public UserTable findById(long userId);
-	public UserTable findUserByUserID(long userId);
-	public long findUserIdByEmailAndPassword(String userEmail, String userPass);
-	public void removeUserByUserID(long userId);
+	public List<UserTable> allApprovedUsers(); //approved user list
+	public List<UserTable> allPendingUsers(); //pending user list
+	public List<UserTable> allRejectedUsers(); //rejected user list
+	public void approveLoan(long loanId); //for loan's approval
+	
 	
 	//Administration
-	public long registerAdmin(Admin admin);
 	
-	//Account
-	public String registerAccount(Account account);
-	
-	//Loan
-	public long registerLoan(Loan loan);
-	
+
 	//Vehicle
-	public long registerVehicle(Vehicle vehicle);
+	
 	
 	
 	public List<Loan> viewAllLoans();

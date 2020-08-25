@@ -70,7 +70,7 @@ public class UserTable implements Serializable {
 		return "UserTable [userId=" + userId + ", userAddress=" + userAddress + ", userAge=" + userAge + ", userEmail="
 				+ userEmail + ", userGender=" + userGender + ", userNameFirst=" + userNameFirst + ", userNameLast="
 				+ userNameLast + ", userNameMiddle=" + userNameMiddle + ", userPass=" + userPass + ", userType="
-				+ userType + ", userZip=" + userZip + ", account=" + account + ", loan=" + loan + "]";
+				+ userType + ", userZip=" + userZip + ", account=" + account + ", loanId=" + loan + "]";
 	}
 
 	public long getUserId() {
@@ -173,7 +173,7 @@ public class UserTable implements Serializable {
 		return this.loan;
 	}
 
-	public void setLoan(Loan loan) {
+	public void setLoanId(Loan loan) {
 		this.loan = loan;
 	}
 

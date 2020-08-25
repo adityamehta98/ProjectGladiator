@@ -26,15 +26,7 @@ public class NewProjectApplicationTests {
 	
 	@Autowired
 	private RepositoryInterface repo;
-//	void isUserPresent() {
-//		boolean id = repo.isUserPresent("aditya@gmail.com");
-//		System.out.println(id);
-//	}
-	//----------------------------------------------------------------
-	// USER OPERATIONS!
-	
-//----------------------------------------------------------------
-// USER OPERATIONS!
+
 //	
 //	@Test
 //	void fetchAll() {
@@ -44,13 +36,13 @@ public class NewProjectApplicationTests {
 //	
 //	@Test
 //	void registerUser() {
-//		
+//
 //		UserTable user=new UserTable();
-//		user.setUserId(2);
+//		user.setUserId(1);
 //		user.setUserNameFirst("Park");
 //		user.setUserNameLast("Jimin");
 //		user.setUserNameMiddle("");
-//		user.setUserAge(BigDecimal.valueOf(24));
+//		user.setUserAge(24);
 //		user.setUserGender("Male");
 //		user.setUserAddress("Busan, South Korea");
 //		user.setUserEmail("babyg@gmail.com");
@@ -119,12 +111,12 @@ public class NewProjectApplicationTests {
 //	void registerLoan() {
 //		Loan loan=new Loan();
 //		loan.setLoanId(1);
-//		loan.setLoanAmount(BigDecimal.valueOf(50000));
-//		loan.setInterestRate(BigDecimal.valueOf(9));
-//		loan.setProcessingFee(BigDecimal.valueOf(1000));
-//		loan.setEmi(BigDecimal.valueOf(5000));
-//		loan.setTenure(BigDecimal.valueOf(36));
-//		loan.setApplicationStatus("Complete");
+//		loan.setLoanAmount(50000);
+//		loan.setInterestRate(9);
+//		loan.setProcessingFee(100);
+//		loan.setEmi(5000);
+//		loan.setTenure(36);
+//		loan.setApplicationStatus("Pending");
 //		loan.setLoanStatus("New");
 //		loan.setLoanStartDate(Date.valueOf("2018-09-12"));
 //		loan.setLoanEndDate(Date.valueOf("2021-09-12"));
@@ -132,192 +124,7 @@ public class NewProjectApplicationTests {
 //	}
 //
 //----------------------------------------------------------------
-//VEHICLE OPERATIONS!
 
-	/*
-	@Test
-	public void removeLoanById() {
-		repo.removeLoanById(1);
-	}
-	
-	@Test
-	void removeLoanByApplicationStatus()
-	{
-		repo.removeLoanByApplicationStatus("Complete");
-	}
-	
-	
-	
-	@Test
-	void findLoanById() {
-		System.out.println(repo.getLoanById(1));
-	}
-	
-	
-	
-	@Test
-	void fetchAllLoans() {
-		System.out.println(repo.viewAllLoans());
-	}
-	*/
-	
-	
-	
-	
-		// USER OPERATIONS!
-		
-//		@Test
-//		void fetchAll() {
-//			System.out.println(repo.fetchAllUsers());
-//		}
-		
-		
-//		@Test
-//		void registerUser() {
-//			
-//			UserTable user=new UserTable();
-//			user.setUserId(2);
-//			user.setUserNameFirst("Park");
-//			user.setUserNameLast("Jimin");
-//			user.setUserNameMiddle("");
-//			user.setUserAge(BigDecimal.valueOf(24));
-//			user.setUserGender("Male");
-//			user.setUserAddress("Busan, South Korea");
-//			user.setUserEmail("babyg@gmail.com");
-//			user.setUserPass("Aditya@123yoonmin");
-//			user.setUserZip("302001");
-//			user.setUserType("New");
-//			repo.registerUser(user);
-//		}
-		
-//		@Test
-//		void removeUser() {
-//			repo.removeUserByUserID(1);
-//		}
-
-//		@Test
-//		void findUserById() {
-//			System.out.println(repo.findUserByUserID(2).toString());
-//		}
-		
-//		@Test
-//		void findUserIdbyEmailandPass() {
-//			long id = repo.findUserIdByEmailAndPassword("babyg@gmail.com", "Aditya@123yoonmin");
-//			System.out.println("the user id is: " +id);
-//		}
-
-//	@Test
-//	void fetchAll() {
-//		System.out.println(repo.fetchAllUsers());
-//	}
-			
-		//ADMIN OPERATIONS
-		
-		
-//		@Test
-//		void registerAdmin() {
-//			Admin admin = new Admin();
-//			admin.setAdminId(1001);
-//			admin.setAdminEmail("kavaK@gmail.com");
-//			admin.setAdminNameFirst("KavitaJi");
-//			admin.setAdminNameLast("Karki");
-//			admin.setAdminGender("Female");
-//			admin.setAdminPass("abcd1234");
-//			admin.setAdminAge(BigDecimal.valueOf(21));
-//			System.out.println(repo.registerAdmin(admin));
-//		}
-	//	
-	//	
-
-//	@Test
-//	void registerUser() 
-//	{	
-//		UserTable user=new UserTable();
-//		user.setUserId(2);
-//		user.setUserNameFirst("Park");
-//		user.setUserNameLast("Jimin");
-//		user.setUserNameMiddle("");
-//		user.setUserAge(24);
-//		user.setUserGender("Male");
-//		user.setUserAddress("Busan, South Korea");
-//		user.setUserEmail("babyg@gmail.com");
-//		user.setUserPass("Aditya@123yoonmin");
-//		user.setUserZip("302001");
-//		user.setUserType("New");
-//		repo.registerUser(user);
-//	}
-
-//	@Test
-//	void removeUser() {
-//		repo.removeUserByUserID(1);
-//	}
-
-//	@Test
-//	void findUserById() {
-//		System.out.println(repo.findUserByUserID(2).toString());
-//	}
-	
-	
-	//-------------------------------------------------------------
-			//ACCOUNT OPERATIONS
-//		@Test
-//		void registerAccount() {
-//			Account account= new Account();
-//			account.setAccNumber("DCYGR234235");
-//			account.setAccBankName("HDFC");
-//			account.setAccIfsc("HDF1344");
-//			account.setAccType("Corporate");
-//			account.setSalary(BigDecimal.valueOf(50000));
-//			account.setExisitingEmi(BigDecimal.valueOf(2));
-//			account.setUserEmploymentType("Salaried");
-//			account.setMonthlySavings(BigDecimal.valueOf(20000));
-//			System.out.println(repo.registerAccount(account));
-//		}
-	//	
-	
-	
-	//-------------------------------------------------------------
-			//LOAN OPERATIONS
-//		@Test
-//		void registerLoan() {
-//			Loan loan=new Loan();
-//			loan.setLoanId(1);
-//			loan.setLoanAmount(BigDecimal.valueOf(50000));
-//			loan.setInterestRate(BigDecimal.valueOf(9));
-//			loan.setProcessingFee(BigDecimal.valueOf(1000));
-//			loan.setEmi(BigDecimal.valueOf(5000));
-//			loan.setTenure(BigDecimal.valueOf(36));
-//			loan.setApplicationStatus("Complete");
-//			loan.setLoanStatus("New");
-//			loan.setLoanStartDate(Date.valueOf("2018-09-12"));
-//			loan.setLoanEndDate(Date.valueOf("2021-09-12"));
-//			System.out.println(repo.registerLoan(loan));
-//		}
-	
-//	
-//	
-//	  
-//	  @Test void removeLoanByApplicationStatus() {
-//	  repo.removeLoanByApplicationStatus("Complete"); }
-//	  
-//	  
-//	  
-//	  @Test public void removeLoanById() { repo.removeLoanById(1); }
-//	  
-//	  
-//	  @Test void findLoanById() { System.out.println(repo.getLoanById(1)); }
-//	  
-//	  
-//	  
-//	  @Test void fetchAllLoans() { System.out.println(repo.viewAllLoans()); }
-//	 
-//	
-	
-	//	
-	
-	
-	
-	//-------------------------------------------------------------
 			//VEHICLE OPERATIONS
 //		@Test
 //		void registerVehicle() {
