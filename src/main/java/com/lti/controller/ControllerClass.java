@@ -1,5 +1,7 @@
 package com.lti.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -12,35 +14,11 @@ import com.lti.model.*;
 import com.lti.exception.CustomerServiceException;
 import com.lti.service.UserService;
 
-//kavita 
-
 @RestController
 @CrossOrigin
 public class ControllerClass {
 	@Autowired
 	private UserService userService;
-	
-	@PostMapping("/viewallusers")
-	public Status viewAllUsers(@RequestBody UserTable user)
-	{
-		try 
-		{
-			userService.viewAllUsers();
-			Status status=new Status();
-			status.setStatus(StatusType.SUCCESS);
-			status.setMessage("Fetching Successful");
-			return status;
-		}
-		
-		catch (CustomerServiceException e) 
-		{
-			Status status=new Status();
-			status.setStatus(StatusType.FAILURE);
-			status.setMessage(e.getMessage());
-			return status;
-		}
-	}
-	
 	
 	@PostMapping("/register")
 	public Status register(@RequestBody UserTable user) 
@@ -163,6 +141,14 @@ public class ControllerClass {
 		}
 	}
 	
+	@PostMapping("/viewallusers")
+	public List<UserTable> viewAllUsers() 
+	{	
+		return userService.viewAllUsers();
+
+	}
+	
+	
 		public static class LoginStatus extends Status {
 			private long userId;
 			private String name;
@@ -224,6 +210,7 @@ public class ControllerClass {
 		public void setMessage(String message) {
 			this.message = message;
 		}
+
 		
 	}
 }
