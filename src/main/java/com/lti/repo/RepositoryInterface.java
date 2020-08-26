@@ -16,6 +16,9 @@ public interface RepositoryInterface {
 	public String registerAccount(Account account); //create account
 	public long registerVehicle(Vehicle vehicle); //register vehicle
 	public long registerLoan(Loan loan); //apply loan
+	
+	
+	public boolean doesAccountExist(String accNumber); //checks if account exists
 	// document method (to-do)
 	
 	//-----------------------------------------------------------------------
@@ -47,5 +50,7 @@ public interface RepositoryInterface {
 	public Loan retrieveLoanByloanType(String loan);
 	
 	public void removeLoanByApplicationStatus(String applicationStatus);
+	
+
 	
 }

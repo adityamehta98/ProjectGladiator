@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
+import com.lti.model.Account;
 import com.lti.model.Admin;
 import com.lti.model.UserTable;
 import com.lti.exception.CustomerServiceException;
@@ -52,5 +53,15 @@ public class UserServiceImpl implements UserService {
 		catch(EmptyResultDataAccessException e) {
 			throw new CustomerServiceException("Incorrect Username/Password");
 		}
+	}
+
+	@Override
+	public void registerAccount(Account account) {
+		if(!repointerface.doesAccountExist(account.getAccNumber())) {
+			repointerface.registerAccount(account);
+		}
+		else
+			throw new CustomerServiceException("Account already being used");
+		
 	}
 }

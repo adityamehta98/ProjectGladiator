@@ -238,8 +238,14 @@ public class RepositoryClass implements RepositoryInterface {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
-
-
+	
+	@Transactional
+	@Override
+	public boolean doesAccountExist(String accNumber) {
+		return (long) em
+				.createQuery("select count(a.accNumber) from Account a where a.accNumber = :em ")
+				.setParameter("em", accNumber)
+				.getSingleResult() == 1 ? true : false;
+	}
 	
 }
