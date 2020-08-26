@@ -14,8 +14,11 @@ public interface RepositoryInterface {
 	
 	
 	public String registerAccount(Account account); //create account
-	public long registerVehicle(Vehicle vehicle); //register vehicle
+
 	public long registerLoan(Loan loan); //apply loan
+	
+	boolean isVehiclePresent(String vehicleId); //check if the vehicle is present
+	public String registerVehicle(Vehicle vehicle); //register vehicle
 	
 	
 	public boolean doesAccountExist(String accNumber); //checks if account exists

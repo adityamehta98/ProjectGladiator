@@ -76,14 +76,22 @@ public class RepositoryClass implements RepositoryInterface {
 		return a.getAccNumber();
 	}
 	
-	// Vehicle Implementation
-	
 	@Override
 	@Transactional
-	public long registerVehicle(Vehicle vehicle) {
+	public String registerVehicle(Vehicle vehicle) {
 		Vehicle veh = em.merge(vehicle);
 		return veh.getVehicleId();
 	}	
+	
+	@Override
+	@Transactional
+	public boolean isVehiclePresent(String vehicleId) {
+		return (long) em
+				.createQuery("select count(v) from Vehicle v where v.vehicleId = :vid")
+				.setParameter("vid", vehicleId)
+				.getSingleResult() == 1 ? true : false;
+	}
+	
 	
 	// Apply Loan 
 	

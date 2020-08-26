@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import com.lti.model.Account;
 import com.lti.model.Admin;
 import com.lti.model.UserTable;
+import com.lti.model.Vehicle;
 import com.lti.exception.CustomerServiceException;
 import com.lti.repo.RepositoryInterface;
 
@@ -57,11 +58,19 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public void registerAccount(Account account) {
-		if(!repointerface.doesAccountExist(account.getAccNumber())) {
+ 
 			repointerface.registerAccount(account);
+			
+	}
+	
+	@Override
+	public void registerVehicle(Vehicle vehicle) {
+		if(!repointerface.isVehiclePresent(vehicle.getVehicleId())) {
+			repointerface.registerVehicle(vehicle);
 		}
 		else
-			throw new CustomerServiceException("Account already being used");
+			throw new CustomerServiceException("Vehicle Already Registered");
 		
 	}
 }
+	

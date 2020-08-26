@@ -17,13 +17,13 @@ public class Vehicle implements Serializable {
 
 	@Id
 	@Column(name="VEHICLE_ID")
-	private long vehicleId;
+	private String vehicleId;
 
 	@Column(name="EX_SHOWROOM_PRICE")
-	private BigDecimal exShowroomPrice;
+	private float exShowroomPrice;
 
 	@Column(name="ON_ROAD_PRICE")
-	private BigDecimal onRoadPrice;
+	private float onRoadPrice;
 
 	@Column(name="VEHICLE_COLOUR", length=30)
 	private String vehicleColour;
@@ -38,7 +38,7 @@ public class Vehicle implements Serializable {
 	private String vehicleType;
 
 	@Column(name="VEHICLE_YEAR")
-	private BigDecimal vehicleYear;
+	private long vehicleYear;
 
 	//bi-directional many-to-one association to Loan
 	@OneToMany(mappedBy="vehicle")
@@ -46,78 +46,96 @@ public class Vehicle implements Serializable {
 
 	public Vehicle() {
 	}
-
-	public long getVehicleId() {
-		return this.vehicleId;
+	
+	public String getVehicleId() {
+		return vehicleId;
 	}
 
-	public void setVehicleId(long vehicleId) {
+
+	public void setVehicleId(String vehicleId) {
 		this.vehicleId = vehicleId;
 	}
 
-	public BigDecimal getExShowroomPrice() {
-		return this.exShowroomPrice;
+
+	public float getExShowroomPrice() {
+		return exShowroomPrice;
 	}
 
-	public void setExShowroomPrice(BigDecimal exShowroomPrice) {
+
+	public void setExShowroomPrice(float exShowroomPrice) {
 		this.exShowroomPrice = exShowroomPrice;
 	}
 
-	public BigDecimal getOnRoadPrice() {
-		return this.onRoadPrice;
+
+	public float getOnRoadPrice() {
+		return onRoadPrice;
 	}
 
-	public void setOnRoadPrice(BigDecimal onRoadPrice) {
+
+	public void setOnRoadPrice(float onRoadPrice) {
 		this.onRoadPrice = onRoadPrice;
 	}
 
+
 	public String getVehicleColour() {
-		return this.vehicleColour;
+		return vehicleColour;
 	}
+
 
 	public void setVehicleColour(String vehicleColour) {
 		this.vehicleColour = vehicleColour;
 	}
 
+
 	public String getVehicleName() {
-		return this.vehicleName;
+		return vehicleName;
 	}
+
 
 	public void setVehicleName(String vehicleName) {
 		this.vehicleName = vehicleName;
 	}
 
+
 	public String getVehicleModel() {
-		return this.vehicleModel;
+		return vehicleModel;
 	}
+
 
 	public void setVehicleModel(String vehicleModel) {
 		this.vehicleModel = vehicleModel;
 	}
 
+
 	public String getVehicleType() {
-		return this.vehicleType;
+		return vehicleType;
 	}
+
 
 	public void setVehicleType(String vehicleType) {
 		this.vehicleType = vehicleType;
 	}
 
-	public BigDecimal getVehicleYear() {
-		return this.vehicleYear;
+
+	public long getVehicleYear() {
+		return vehicleYear;
 	}
 
-	public void setVehicleYear(BigDecimal vehicleYear) {
+
+	public void setVehicleYear(long vehicleYear) {
 		this.vehicleYear = vehicleYear;
 	}
 
+
 	public List<Loan> getLoans() {
-		return this.loans;
+		return loans;
 	}
+
 
 	public void setLoans(List<Loan> loans) {
 		this.loans = loans;
 	}
+
 
 	public Loan addLoan(Loan loan) {
 		getLoans().add(loan);

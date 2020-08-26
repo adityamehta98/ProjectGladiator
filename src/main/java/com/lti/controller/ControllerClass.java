@@ -99,6 +99,24 @@ public class ControllerClass {
 		}
 	}
 	
+	@PostMapping("/vehicleregister")
+	public Status registerVehicle(@RequestBody Vehicle vehicle) 
+	{
+		try {
+			userService.registerVehicle(vehicle);
+			Status status=new Status();
+			status.setStatus(StatusType.SUCCESS);
+			status.setMessage("Registration Successful");
+			return status;
+		}
+		
+		catch (CustomerServiceException e) {
+			Status status=new Status();
+			status.setStatus(StatusType.FAILURE);
+			status.setMessage(e.getMessage());
+			return status;
+		}
+	}
 	
 		public static class LoginStatus extends Status {
 			private long userId;
@@ -163,8 +181,4 @@ public class ControllerClass {
 		}
 		
 	}
-	
-	
-	
-	
 }
