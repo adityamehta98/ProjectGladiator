@@ -2,15 +2,21 @@ package com.lti.model;
 
 import java.io.Serializable;
 import javax.persistence.*;
-import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 
+
+/**
+ * The persistent class for the LOAN database table.
+ * 
+ */
 @Entity
 @NamedQuery(name="Loan.findAll", query="SELECT l FROM Loan l")
 public class Loan implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
+	@SequenceGenerator(name = "Loan_Id_Seq", sequenceName = "Loan_Id_Seq", allocationSize = 10)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "Loan_Id_Seq")
 	@Column(name="LOAN_ID")
 	private long loanId;
 
@@ -34,7 +40,7 @@ public class Loan implements Serializable {
 	@Column(name="LOAN_START_DATE")
 	private Date loanStartDate;
 
-	@Column(name="LOAN_STATUS", length=20)
+	@Column(name="LOAN_STATUS", length=30)
 	private String loanStatus;
 
 	@Column(name="PROCESSING_FEE")
@@ -43,7 +49,7 @@ public class Loan implements Serializable {
 	@Column(name="TENURE")
 	private float tenure;
 
-	@Column(name="LOAN_TYPE", length=20)
+	@Column(name="LOAN_TYPE", length=30)
 	private String loantype;
 	
 	//bi-directional many-to-one association to Account

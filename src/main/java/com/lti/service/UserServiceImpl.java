@@ -4,7 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
+import com.lti.model.Account;
 import com.lti.model.Admin;
+import com.lti.model.Loan;
 import com.lti.model.UserTable;
 import com.lti.model.Vehicle;
 import com.lti.exception.CustomerServiceException;
@@ -35,7 +37,6 @@ public class UserServiceImpl implements UserService {
 			UserTable user = repointerface.findUserByUserID(id);
 			return user;
 		}
-		
 		catch(EmptyResultDataAccessException e) {
 			throw new CustomerServiceException("Incorrect Username/Password");
 		}
@@ -57,6 +58,13 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
+	public void registerAccount(Account account) {
+ 
+			repointerface.registerAccount(account);
+			
+	}
+	
+	@Override
 	public void registerVehicle(Vehicle vehicle) {
 		if(!repointerface.isVehiclePresent(vehicle.getVehicleId())) {
 			repointerface.registerVehicle(vehicle);
@@ -64,5 +72,10 @@ public class UserServiceImpl implements UserService {
 		else
 			throw new CustomerServiceException("Vehicle Already Registered");
 		
+	}
+	
+	@Override
+	public void registerLoan(Loan loan) {
+			repointerface.registerLoan(loan);
 	}
 }

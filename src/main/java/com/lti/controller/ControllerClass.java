@@ -12,6 +12,8 @@ import com.lti.model.*;
 import com.lti.exception.CustomerServiceException;
 import com.lti.service.UserService;
 
+//kavita 
+
 @RestController
 @CrossOrigin
 public class ControllerClass {
@@ -78,6 +80,27 @@ public class ControllerClass {
 		}
 	}
 	
+	@PostMapping("/registeraccount")
+	public Status registerAccount(@RequestBody Account account) 
+	{
+		try 
+		{
+			userService.registerAccount(account);
+			Status status=new Status();
+			status.setStatus(StatusType.SUCCESS);
+			status.setMessage("Account Registration Successful");
+			return status;
+		}
+		
+		catch (CustomerServiceException e) 
+		{
+			Status status=new Status();
+			status.setStatus(StatusType.FAILURE);
+			status.setMessage(e.getMessage());
+			return status;
+		}
+	}
+	
 	@PostMapping("/vehicleregister")
 	public Status registerVehicle(@RequestBody Vehicle vehicle) 
 	{
@@ -90,6 +113,27 @@ public class ControllerClass {
 		}
 		
 		catch (CustomerServiceException e) {
+			Status status=new Status();
+			status.setStatus(StatusType.FAILURE);
+			status.setMessage(e.getMessage());
+			return status;
+		}
+	}
+	
+	@PostMapping("/registerloan")
+	public Status registerloan(@RequestBody Loan loan) 
+	{
+		try 
+		{
+			userService.registerLoan(loan);
+			Status status=new Status();
+			status.setStatus(StatusType.SUCCESS);
+			status.setMessage("Loan Registration Successful");
+			return status;
+		}
+		
+		catch (CustomerServiceException e) 
+		{
 			Status status=new Status();
 			status.setStatus(StatusType.FAILURE);
 			status.setMessage(e.getMessage());

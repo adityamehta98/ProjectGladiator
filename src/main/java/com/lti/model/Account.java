@@ -2,7 +2,6 @@ package com.lti.model;
 
 import java.io.Serializable;
 import javax.persistence.*;
-import java.math.BigDecimal;
 import java.util.List;
 
 
@@ -25,13 +24,13 @@ public class Account implements Serializable {
 	private String accType;
 
 	@Column(name="EXISITING_EMI")
-	private BigDecimal exisitingEmi;
+	private float exisitingEmi;
 
 	@Column(name="MONTHLY_SAVINGS")
-	private BigDecimal monthlySavings;
+	private float monthlySavings;
 
 	@Column(name="Salary")
-	private BigDecimal salary;
+	private float salary;
 
 	@Column(name="USER_EMPLOYMENT_TYPE", length=30)
 	private String userEmploymentType;
@@ -80,27 +79,27 @@ public class Account implements Serializable {
 		this.accType = accType;
 	}
 
-	public BigDecimal getExisitingEmi() {
+	public float getExisitingEmi() {
 		return this.exisitingEmi;
 	}
 
-	public void setExisitingEmi(BigDecimal exisitingEmi) {
+	public void setExisitingEmi(float exisitingEmi) {
 		this.exisitingEmi = exisitingEmi;
 	}
 
-	public BigDecimal getMonthlySavings() {
+	public float getMonthlySavings() {
 		return this.monthlySavings;
 	}
 
-	public void setMonthlySavings(BigDecimal monthlySavings) {
+	public void setMonthlySavings(float monthlySavings) {
 		this.monthlySavings = monthlySavings;
 	}
 
-	public BigDecimal getSalary() {
+	public float getSalary() {
 		return this.salary;
 	}
 
-	public void setSalary(BigDecimal salary) {
+	public void setSalary(float salary) {
 		this.salary = salary;
 	}
 
@@ -127,7 +126,7 @@ public class Account implements Serializable {
 	public void setUserTables(List<UserTable> userTables) {
 		this.userTables = userTables;
 	}
-	
+
 	public UserTable addUserTable(UserTable userTable) {
 		getUserTables().add(userTable);
 		userTable.setAccount(this);

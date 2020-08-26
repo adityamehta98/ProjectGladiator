@@ -66,6 +66,7 @@ public class RepositoryClass implements RepositoryInterface {
 		em.remove(user);
 	}
 	
+	
 	// Create Account
 	
 	@Override
@@ -74,8 +75,6 @@ public class RepositoryClass implements RepositoryInterface {
 		Account a = em.merge(account);
 		return a.getAccNumber();
 	}
-	
-	// Vehicle Implementation
 	
 	@Override
 	@Transactional
@@ -93,18 +92,19 @@ public class RepositoryClass implements RepositoryInterface {
 				.getSingleResult() == 1 ? true : false;
 	}
 	
+	
+	// Apply Loan 
+	
 	@Override
 	@Transactional
 	public long registerLoan(Loan loan) {
 		Loan l = em.merge(loan);
 		return l.getLoanId();
-	}
-		
+	}	
 		
 	// Document Implementation (To be Done)
 		
 		
-	
 //----------------------------------------------------------------------
 		
 	// Admin Registration
@@ -245,10 +245,14 @@ public class RepositoryClass implements RepositoryInterface {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
-
-
-
-
+	
+	@Transactional
+	@Override
+	public boolean doesAccountExist(String accNumber) {
+		return (long) em
+				.createQuery("select count(a.accNumber) from Account a where a.accNumber = :em ")
+				.setParameter("em", accNumber)
+				.getSingleResult() == 1 ? true : false;
+	}
 	
 }
