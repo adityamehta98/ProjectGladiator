@@ -99,12 +99,12 @@ public class NewProjectApplicationTests {
 //	void registerAdmin() {
 //		Admin admin = new Admin();
 //		admin.setAdminId(1001);
-//		admin.setAdminEmail("kavaK@gmail.com");
-//		admin.setAdminNameFirst("KavitaJi");
+//		admin.setAdminEmail("kk@gmail.com");
+//		admin.setAdminNameFirst("Kavita");
 //		admin.setAdminNameLast("Karki");
 //		admin.setAdminGender("Female");
 //		admin.setAdminPass("abcd1234");
-//		admin.setAdminAge(21);
+//		admin.setAdminAge(22);
 //		System.out.println(repo.registerAdmin(admin));
 //	}
 //	
