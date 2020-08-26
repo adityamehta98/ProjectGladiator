@@ -83,6 +83,6 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public List<UserTable> viewAllUsers() {
-		return repointerface.allApprovedUsers();
+		return repointerface.fetchAllRegisteredUsers();
 	}
 }
