@@ -29,6 +29,22 @@ public class NewProjectApplicationTests {
 	private RepositoryInterface repo;
 	
 //	@Test
+//	void registerLoan() {
+//		Loan loan=new Loan();
+//		loan.setLoanId(4);
+//		loan.setLoanAmount(190000);
+//		loan.setInterestRate(10);
+//		loan.setProcessingFee(10000);
+//		loan.setEmi(30000);
+//		loan.setTenure(8);
+//		loan.setApplicationStatus("Rejected");
+//		loan.setLoanStatus("Old");
+////		loan.setLoanStartDate(Date.valueOf("2019-09-12"));
+////		loan.setLoanEndDate(Date.valueOf("2020-07-12"));
+//		System.out.println(repo.registerLoan(loan));
+//	}
+	
+//	@Test
 //	void getApprovedUsers() {
 //		List<UserTable> list = repo.allApprovedUsers();
 //		System.out.println(list.toString());
