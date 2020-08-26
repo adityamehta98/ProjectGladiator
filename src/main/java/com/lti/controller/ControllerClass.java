@@ -1,5 +1,7 @@
 package com.lti.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -139,6 +141,14 @@ public class ControllerClass {
 		}
 	}
 	
+	@PostMapping("/viewallusers")
+	public List<UserTable> viewAllUsers(@RequestBody UserTable user) 
+	{	
+		return userService.viewAllUsers();
+
+	}
+	
+	
 		public static class LoginStatus extends Status {
 			private long userId;
 			private String name;
@@ -200,6 +210,7 @@ public class ControllerClass {
 		public void setMessage(String message) {
 			this.message = message;
 		}
+
 		
 	}
 }

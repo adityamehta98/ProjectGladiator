@@ -1,5 +1,7 @@
 package com.lti.service;
 
+import java.util.List;
+
 import com.lti.model.*;
 
 public interface UserService {
@@ -15,4 +17,8 @@ public interface UserService {
 	void registerVehicle(Vehicle vehicle);
 	
 	void registerLoan(Loan loan);
+	
+	List<UserTable> viewAllUsers();  //admin can view all registered users
+	
+	
 }
