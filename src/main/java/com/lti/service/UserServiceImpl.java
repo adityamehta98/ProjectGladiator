@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import com.lti.model.Account;
 import com.lti.model.Admin;
+import com.lti.model.Loan;
 import com.lti.model.UserTable;
 import com.lti.model.Vehicle;
 import com.lti.exception.CustomerServiceException;
@@ -71,6 +72,11 @@ public class UserServiceImpl implements UserService {
 		else
 			throw new CustomerServiceException("Vehicle Already Registered");
 		
+	}
+	
+	@Override
+	public void registerLoan(Loan loan) {
+			repointerface.registerLoan(loan);
 	}
 }
 	

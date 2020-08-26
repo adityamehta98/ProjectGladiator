@@ -100,8 +100,7 @@ public class RepositoryClass implements RepositoryInterface {
 	public long registerLoan(Loan loan) {
 		Loan l = em.merge(loan);
 		return l.getLoanId();
-	}
-		
+	}	
 		
 	// Document Implementation (To be Done)
 		

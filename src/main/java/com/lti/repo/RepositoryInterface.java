@@ -17,6 +17,8 @@ public interface RepositoryInterface {
 
 	public long registerLoan(Loan loan); //apply loan
 	
+	
+	
 	boolean isVehiclePresent(String vehicleId); //check if the vehicle is present
 	public String registerVehicle(Vehicle vehicle); //register vehicle
 	

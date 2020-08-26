@@ -13,4 +13,6 @@ public interface UserService {
 	void registerAccount(Account account);
 	
 	void registerVehicle(Vehicle vehicle);
+	
+	void registerLoan(Loan loan);
 }

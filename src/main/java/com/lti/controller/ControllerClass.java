@@ -118,6 +118,27 @@ public class ControllerClass {
 		}
 	}
 	
+	@PostMapping("/registerloan")
+	public Status registerloan(@RequestBody Loan loan) 
+	{
+		try 
+		{
+			userService.registerLoan(loan);
+			Status status=new Status();
+			status.setStatus(StatusType.SUCCESS);
+			status.setMessage("Loan Registration Successful");
+			return status;
+		}
+		
+		catch (CustomerServiceException e) 
+		{
+			Status status=new Status();
+			status.setStatus(StatusType.FAILURE);
+			status.setMessage(e.getMessage());
+			return status;
+		}
+	}
+	
 		public static class LoginStatus extends Status {
 			private long userId;
 			private String name;
