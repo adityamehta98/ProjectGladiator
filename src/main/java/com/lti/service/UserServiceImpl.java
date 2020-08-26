@@ -85,7 +85,37 @@ public class UserServiceImpl implements UserService {
 	public List<UserTable> viewAllUsers() {
 		return repointerface.fetchAllRegisteredUsers();
 	}
+	
+	@Override
+	public List<Loan> viewRejectedUsers() {
+		return repointerface.allRejectedUsers();
+	}
 
+	@Override
+	public List<Loan> viewApprovedUsers() {
+		return repointerface.allApprovedUsers();
+	}
+
+	@Override
+	public List<Loan> viewPendingUsers() {
+		return repointerface.allPendingUsers();
+	}
+	
+
+//	@Override
+//	public List<UserTable> viewRejectedUsers() {
+//		return repointerface.allRejectedUsers();
+//	}
+//
+//	@Override
+//	public List<UserTable> viewApprovedUsers() {
+//		return repointerface.allApprovedUsers();
+//	}
+//
+//	@Override
+//	public List<UserTable> viewPendingUsers() {
+//		return repointerface.allPendingUsers();
+//	}
 	
 }
 	

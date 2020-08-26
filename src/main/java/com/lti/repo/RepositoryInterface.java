@@ -35,13 +35,26 @@ public interface RepositoryInterface {
 	public Admin findAdminById(long adminId); // admin login (2)
 	
 	public List<UserTable> fetchAllRegisteredUsers(); // find all registered users 
-
-	public List<UserTable> allApprovedUsers(); //approved user list
-	public List<UserTable> allPendingUsers(); //pending user list
-	public List<UserTable> allRejectedUsers(); //rejected user list
+	
+	public List<Loan> allApprovedUsers(); //approved user list
+	public List<Loan> allPendingUsers(); //pending user list
+	public List<Loan> allRejectedUsers(); //rejected user list
+	
+	
 	public void approveLoan(long loanId); //for loan's approval
 	public void rejectLoan(long loanId); //rejecting loan!
 	
+	/*
+	 * 
+	 * Will implement when mapping is sorted
+	 * 
+	 * 
+	 */
+
+//	public List<UserTable> allApprovedUsers(); //approved user list
+//	public List<UserTable> allPendingUsers(); //pending user list
+//	public List<UserTable> allRejectedUsers(); //rejected user list
+
 	
 	
 	

@@ -152,32 +152,58 @@ public class RepositoryClass implements RepositoryInterface {
 				.createNamedQuery("UserTable.findAll")
 				.getResultList();
 	}	
-		
+	
 	@SuppressWarnings("unchecked")
 	@Override
 	@Transactional
-	public List<UserTable> allApprovedUsers() {
+	public List<Loan> allApprovedUsers() {
 		return em
-				.createQuery("select u from UserTable u where u.loan = (select l.loanId from Loan l where l.applicationStatus = 'Approved')")
+				.createQuery("select l from Loan l where l.applicationStatus = 'Approved'")
 				.getResultList();
 	}
 		
 	@SuppressWarnings("unchecked")
 	@Override
 	@Transactional
-	public List<UserTable> allPendingUsers() {
+	public List<Loan> allPendingUsers() {
 		return em
-				.createQuery("select u from UserTable u where u.loan = (select l.loanId from Loan l where l.applicationStatus = 'Pending')")
+				.createQuery("select l from Loan l where l.applicationStatus = 'Pending'")
 				.getResultList();
 	}
 		
 	@SuppressWarnings("unchecked")
 	@Override
 	@Transactional
-	public List<UserTable> allRejectedUsers() {
+	public List<Loan> allRejectedUsers() {
 		return em
-				.createQuery("select u from UserTable u where u.loan = (select l.loanId from Loan l where l.applicationStatus = 'Rejected')")
+				.createQuery("select l from Loan l where l.applicationStatus = 'Rejected'")
 				.getResultList();
+		
+//	@SuppressWarnings("unchecked")
+//	@Override
+//	@Transactional
+//	public List<Loan> allApprovedUsers() {
+//		return em
+//				.createQuery("select u from UserTable u where u.loan = (select l.loanId from Loan l where l.applicationStatus = 'Approved')")
+//				.getResultList();
+//	}
+//		
+//	@SuppressWarnings("unchecked")
+//	@Override
+//	@Transactional
+//	public List<Loan> allPendingUsers() {
+//		return em
+//				.createQuery("select u from UserTable u where u.loan = (select l.loanId from Loan l where l.applicationStatus = 'Pending')")
+//				.getResultList();
+//	}
+//		
+//	@SuppressWarnings("unchecked")
+//	@Override
+//	@Transactional
+//	public List<Loan> allRejectedUsers() {
+//		return em
+//				.createQuery("select u from UserTable u where u.loan = (select l.loanId from Loan l where l.applicationStatus = 'Rejected')")
+//				.getResultList();
 	}
 		
 	@Override

@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -141,12 +143,54 @@ public class ControllerClass {
 		}
 	}
 	
-	@PostMapping("/viewallusers")
-	public List<UserTable> viewAllUsers(@RequestBody UserTable user) 
+	@GetMapping("/viewallusers")
+	public List<UserTable> viewAllUsers() 
 	{	
 		return userService.viewAllUsers();
 
 	}
+	
+	@GetMapping("/viewrejectedusers")
+	public List<Loan> viewRejectedUsers() 
+	{	
+		return userService.viewRejectedUsers();
+
+	}
+	
+	@GetMapping("/viewapprovedusers")
+	public List<Loan> viewApprovedUsers() 
+	{	
+		return userService.viewApprovedUsers();
+
+	}
+	
+	@GetMapping("/viewpendingusers")
+	public List<Loan> viewPendingUsers() 
+	{	
+		return userService.viewPendingUsers();
+
+	}
+	
+//	@GetMapping("/viewrejectedusers")
+//	public List<UserTable> viewRejectedUsers() 
+//	{	
+//		return userService.viewRejectedUsers();
+//
+//	}
+//	
+//	@GetMapping("/viewapprovedusers")
+//	public List<UserTable> viewApprovedUsers() 
+//	{	
+//		return userService.viewApprovedUsers();
+//
+//	}
+//	
+//	@GetMapping("/viewpendingusers")
+//	public List<UserTable> viewPendingUsers() 
+//	{	
+//		return userService.viewPendingUsers();
+//
+//	}
 	
 	
 		public static class LoginStatus extends Status {
