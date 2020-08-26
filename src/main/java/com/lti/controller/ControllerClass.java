@@ -78,7 +78,7 @@ public class ControllerClass {
 		}
 	}
 	
-	@PostMapping("/registerAccount")
+	@PostMapping("/registeraccount")
 	public Status registerAccount(@RequestBody Account account) 
 	{
 		try 

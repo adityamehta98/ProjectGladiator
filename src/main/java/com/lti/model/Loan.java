@@ -2,7 +2,6 @@ package com.lti.model;
 
 import java.io.Serializable;
 import javax.persistence.*;
-import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 
@@ -16,6 +15,8 @@ import java.util.List;
 public class Loan implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
+	@SequenceGenerator(name = "Loan_Id_Seq", sequenceName = "Loan_Id_Seq", allocationSize = 10)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "Loan_Id_Seq")
 	@Column(name="LOAN_ID")
 	private long loanId;
 
