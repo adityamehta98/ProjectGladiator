@@ -9,6 +9,7 @@ import java.math.BigDecimal;
  * The persistent class for the "ADMIN" database table.
  * 
  */
+
 @Entity
 @Table(name="ADMIN")
 @NamedQuery(name="Admin.findAll", query="SELECT a FROM Admin a")

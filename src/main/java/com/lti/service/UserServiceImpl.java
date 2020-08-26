@@ -35,6 +35,7 @@ public class UserServiceImpl implements UserService {
 			UserTable user = repointerface.findUserByUserID(id);
 			return user;
 		}
+		
 		catch(EmptyResultDataAccessException e) {
 			throw new CustomerServiceException("Incorrect Username/Password");
 		}

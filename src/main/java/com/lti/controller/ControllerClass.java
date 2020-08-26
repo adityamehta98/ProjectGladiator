@@ -81,8 +81,7 @@ public class ControllerClass {
 	@PostMapping("/vehicleregister")
 	public Status registerVehicle(@RequestBody Vehicle vehicle) 
 	{
-		try 
-		{
+		try {
 			userService.registerVehicle(vehicle);
 			Status status=new Status();
 			status.setStatus(StatusType.SUCCESS);
@@ -90,8 +89,7 @@ public class ControllerClass {
 			return status;
 		}
 		
-		catch (CustomerServiceException e) 
-		{
+		catch (CustomerServiceException e) {
 			Status status=new Status();
 			status.setStatus(StatusType.FAILURE);
 			status.setMessage(e.getMessage());

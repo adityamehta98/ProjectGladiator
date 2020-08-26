@@ -66,7 +66,6 @@ public class RepositoryClass implements RepositoryInterface {
 		em.remove(user);
 	}
 	
-	
 	// Create Account
 	
 	@Override
@@ -107,6 +106,7 @@ public class RepositoryClass implements RepositoryInterface {
 	// Document Implementation (To be Done)
 		
 		
+	
 //----------------------------------------------------------------------
 		
 	// Admin Registration

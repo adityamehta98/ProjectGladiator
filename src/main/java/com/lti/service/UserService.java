@@ -11,4 +11,5 @@ public interface UserService {
 	Admin loginadmin(String adminEmail, String adminPassword);
 	
 	void registerVehicle(Vehicle vehicle);
+	
 }

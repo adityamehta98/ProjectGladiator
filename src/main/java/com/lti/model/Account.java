@@ -127,7 +127,7 @@ public class Account implements Serializable {
 	public void setUserTables(List<UserTable> userTables) {
 		this.userTables = userTables;
 	}
-
+	
 	public UserTable addUserTable(UserTable userTable) {
 		getUserTables().add(userTable);
 		userTable.setAccount(this);
