@@ -80,12 +80,21 @@ public class RepositoryClass implements RepositoryInterface {
 	
 	@Override
 	@Transactional
-	public long registerVehicle(Vehicle vehicle) {
+	public String registerVehicle(Vehicle vehicle) {
 		Vehicle veh = em.merge(vehicle);
 		return veh.getVehicleId();
 	}	
 	
 	// Apply Loan 
+	
+	@Override
+	@Transactional
+	public boolean isVehiclePresent(String vehicleId) {
+		return (long) em
+				.createQuery("select count(v) from Vehicle v where v.vehicleId = :vid")
+				.setParameter("vid", vehicleId)
+				.getSingleResult() == 1 ? true : false;
+	}
 	
 	@Override
 	@Transactional
@@ -238,6 +247,8 @@ public class RepositoryClass implements RepositoryInterface {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+
 
 
 

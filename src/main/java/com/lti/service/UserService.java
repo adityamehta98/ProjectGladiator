@@ -9,4 +9,6 @@ public interface UserService {
 	UserTable login(String email, String password);
 	
 	Admin loginadmin(String adminEmail, String adminPassword);
+	
+	void registerVehicle(Vehicle vehicle);
 }

@@ -22,7 +22,7 @@ public class UserTable implements Serializable {
 	@Column(name="USER_ID")
 	private long userId;
 
-	@Column(name="USER_ADDRESS", length=30)
+	@Column(name="USER_ADDRESS")
 	private String userAddress;
 
 	@Column(name="USER_AGE")
