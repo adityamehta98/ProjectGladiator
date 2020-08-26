@@ -84,8 +84,6 @@ public class RepositoryClass implements RepositoryInterface {
 		return veh.getVehicleId();
 	}	
 	
-	// Apply Loan 
-	
 	@Override
 	@Transactional
 	public boolean isVehiclePresent(String vehicleId) {

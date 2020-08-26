@@ -14,8 +14,10 @@ public interface RepositoryInterface {
 	
 	
 	public String registerAccount(Account account); //create account
+	
 	boolean isVehiclePresent(String vehicleId); //check if the vehicle is present
 	public String registerVehicle(Vehicle vehicle); //register vehicle
+	
 	public long registerLoan(Loan loan); //apply loan
 	// document method (to-do)
 	
