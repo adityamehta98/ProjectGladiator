@@ -1,5 +1,7 @@
 package com.lti.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
@@ -77,5 +79,10 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public void registerLoan(Loan loan) {
 			repointerface.registerLoan(loan);
+	}
+
+	@Override
+	public List<UserTable> viewAllUsers() {
+		return repointerface.allApprovedUsers();
 	}
 }

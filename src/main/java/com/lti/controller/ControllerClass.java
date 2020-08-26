@@ -20,6 +20,28 @@ public class ControllerClass {
 	@Autowired
 	private UserService userService;
 	
+	@PostMapping("/viewallusers")
+	public Status viewAllUsers(@RequestBody UserTable user)
+	{
+		try 
+		{
+			userService.viewAllUsers();
+			Status status=new Status();
+			status.setStatus(StatusType.SUCCESS);
+			status.setMessage("Fetching Successful");
+			return status;
+		}
+		
+		catch (CustomerServiceException e) 
+		{
+			Status status=new Status();
+			status.setStatus(StatusType.FAILURE);
+			status.setMessage(e.getMessage());
+			return status;
+		}
+	}
+	
+	
 	@PostMapping("/register")
 	public Status register(@RequestBody UserTable user) 
 	{
