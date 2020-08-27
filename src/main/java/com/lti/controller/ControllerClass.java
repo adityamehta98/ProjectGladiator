@@ -192,6 +192,48 @@ public class ControllerClass {
 //
 //	}
 	
+	@PostMapping("/rejectloan")
+	public Status rejectLoan(@RequestBody long loanId) 
+	{
+		try 
+		{
+			userService.rejectLoan(loanId);
+			Status status=new Status();
+			status.setStatus(StatusType.SUCCESS);
+			status.setMessage("Loan Rejected");
+			return status;
+		}
+		
+		catch (CustomerServiceException e) 
+		{
+			Status status=new Status();
+			status.setStatus(StatusType.FAILURE);
+			status.setMessage(e.getMessage());
+			return status;
+		}
+	}
+	
+	@PostMapping("/approveLoan")
+	public Status register(@RequestBody long loanId) 
+	{
+		try 
+		{
+			userService.approveLoan(loanId);
+			Status status=new Status();
+			status.setStatus(StatusType.SUCCESS);
+			status.setMessage("Loan Approved");
+			return status;
+		}
+		
+		catch (CustomerServiceException e) 
+		{
+			Status status=new Status();
+			status.setStatus(StatusType.FAILURE);
+			status.setMessage(e.getMessage());
+			return status;
+		}
+	}
+	
 	
 		public static class LoginStatus extends Status {
 			private long userId;

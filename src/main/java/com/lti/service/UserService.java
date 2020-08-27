@@ -25,12 +25,17 @@ public interface UserService {
 	List<Loan> viewApprovedUsers();
 
 	List<Loan> viewPendingUsers();
+	
 
 //	List<UserTable> viewRejectedUsers();
 //
 //	List<UserTable> viewApprovedUsers();
 //
 //	List<UserTable> viewPendingUsers();
+
+	void approveLoan(long loanId);
+
+	void rejectLoan(long loanId);
 	
 	
 }

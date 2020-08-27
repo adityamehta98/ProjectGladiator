@@ -100,6 +100,17 @@ public class UserServiceImpl implements UserService {
 	public List<Loan> viewPendingUsers() {
 		return repointerface.allPendingUsers();
 	}
+
+	@Override
+	public void approveLoan(long loanId) {
+		repointerface.approveLoan(loanId);	
+	}
+
+	@Override
+	public void rejectLoan(long loanId) {
+		repointerface.rejectLoan(loanId);
+		
+	}
 	
 
 //	@Override
