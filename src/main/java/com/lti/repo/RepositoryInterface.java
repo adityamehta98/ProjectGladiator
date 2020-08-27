@@ -48,6 +48,8 @@ public interface RepositoryInterface {
 	public void approveLoan(long loanId); //for loan's approval
 	public void rejectLoan(long loanId); //rejecting loan!
 	
+	public List<Loan> getLoanStatusByUserId(long userId); //getting loan Status
+	
 	
 	
 	/*
@@ -74,6 +76,7 @@ public interface RepositoryInterface {
 	public Loan retrieveLoanByloanType(String loan);
 	
 	public void removeLoanByApplicationStatus(String applicationStatus);
+	
 	
 	
 }

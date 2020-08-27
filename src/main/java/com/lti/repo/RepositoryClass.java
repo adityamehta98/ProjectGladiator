@@ -244,6 +244,16 @@ public class RepositoryClass implements RepositoryInterface {
 				.createNamedQuery("Loan.findAll")
 				.getResultList();
 	}
+	
+	@SuppressWarnings("unchecked")
+	@Transactional
+	@Override
+	public List<Loan> getLoanStatusByUserId(long userid) {
+		return em.createQuery("select l from Loan l where l.user_id =: id ")
+				.setParameter("id", userid)
+				.getResultList();
+	}
+
 /*
 	@Override
 	@Transactional
@@ -290,5 +300,6 @@ public class RepositoryClass implements RepositoryInterface {
 				.getSingleResult() == 1 ? true : false;
 	}
 
+	
 	
 }

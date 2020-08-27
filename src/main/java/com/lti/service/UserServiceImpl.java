@@ -116,6 +116,11 @@ public class UserServiceImpl implements UserService {
 		repointerface.rejectLoan(loanId);
 		
 	}
+
+	@Override
+	public List<Loan> viewLoanStatus(long userId) {
+		return repointerface.getLoanStatusByUserId(userId);
+	}
 	
 
 //	@Override

@@ -52,6 +52,17 @@ public class Loan implements Serializable {
 	@Column(name="LOAN_TYPE", length=30)
 	private String loantype;
 	
+	@Column(name="USER_ID")
+	private long user_id;
+	
+	public long getUser_id() {
+		return user_id;
+	}
+
+	public void setUser_id(long user_id) {
+		this.user_id = user_id;
+	}
+
 	@OneToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="VEHICLE_ID", referencedColumnName = "VEHICLE_ID")
 	private Vehicle vehicle;
@@ -59,6 +70,8 @@ public class Loan implements Serializable {
 	@ManyToOne
 	@JoinColumn(name="ACC_NUMBER")
 	private Account account;
+	
+	
    
 //new
 	public Loan() {

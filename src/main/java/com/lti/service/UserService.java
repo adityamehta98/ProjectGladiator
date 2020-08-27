@@ -41,7 +41,7 @@ public interface UserService {
 
 	void rejectLoan(long loanId);
 
+	List<Loan> viewLoanStatus(long userId);
 
-	
-	
+
 }

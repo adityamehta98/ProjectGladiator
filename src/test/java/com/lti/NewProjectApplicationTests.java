@@ -28,6 +28,11 @@ public class NewProjectApplicationTests {
 	@Autowired
 	private RepositoryInterface repo;
 	
+	@Test
+	void getLoanStatus() {
+		System.out.println(repo.getLoanStatusByUserId(10));
+	}
+	
 //	@Test
 //	void registerLoan() {
 //		Loan loan=new Loan();
