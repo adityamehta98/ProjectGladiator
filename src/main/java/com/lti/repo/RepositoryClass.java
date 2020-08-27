@@ -249,7 +249,7 @@ public class RepositoryClass implements RepositoryInterface {
 	@Transactional
 	@Override
 	public List<Loan> getLoanStatusByUserId(long userid) {
-		return em.createQuery("select l from Loan l where l.user_id =: id ")
+		return em.createQuery("select l from Loan l where l.user_id =:id ")
 				.setParameter("id", userid)
 				.getResultList();
 	}

@@ -30,7 +30,7 @@ public class NewProjectApplicationTests {
 	
 	@Test
 	void getLoanStatus() {
-		System.out.println(repo.getLoanStatusByUserId(10));
+		System.out.println(repo.getLoanStatusByUserId(0));
 	}
 	
 //	@Test
