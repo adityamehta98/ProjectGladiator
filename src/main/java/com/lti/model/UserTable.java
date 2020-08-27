@@ -1,8 +1,9 @@
 package com.lti.model;
 
 import java.io.Serializable;
+import java.util.List;
+
 import javax.persistence.*;
-import java.math.BigDecimal;
 
 
 /**
@@ -21,7 +22,7 @@ public class UserTable implements Serializable {
 	@Column(name="USER_ID")
 	private long userId;
 
-	@Column(name="USER_ADDRESS", length=30)
+	@Column(name="USER_ADDRESS", length=50)
 	private String userAddress;
 
 	@Column(name="USER_AGE")
@@ -51,15 +52,10 @@ public class UserTable implements Serializable {
 	@Column(name="USER_ZIP", length=30)
 	private String userZip;
 
-	//bi-directional many-to-one association to Account
-	@ManyToOne
-	@JoinColumn(name="ACC_NUMBER")
-	private Account account;
-
-	//bi-directional many-to-one association to Loan
-	@ManyToOne
-	@JoinColumn(name="LOAN_ID")
-	private Loan loan;
+	//bi-directional one-to-one association to Account
+	@OneToOne(cascade=CascadeType.ALL,fetch=FetchType.EAGER)
+	@JoinColumn(name="ACC_NUMBER", referencedColumnName = "ACC_NUMBER")
+	private Account account;//repo.user
 
 	public UserTable() {
 	}
@@ -160,12 +156,11 @@ public class UserTable implements Serializable {
 		this.account = account;
 	}
 
-	public Loan getLoan() {
-		return this.loan;
+	@Override
+	public String toString() {
+		return "UserTable [userId=" + userId + ", userAddress=" + userAddress + ", userAge=" + userAge + ", userEmail="
+				+ userEmail + ", userGender=" + userGender + ", userNameFirst=" + userNameFirst + ", userNameLast="
+				+ userNameLast + ", userNameMiddle=" + userNameMiddle + ", userPass=" + userPass + ", userType="
+				+ userType + ", userZip=" + userZip + ", account=" + account + "]";
 	}
-
-	public void setLoan(Loan loan) {
-		this.loan = loan;
-	}
-
 }

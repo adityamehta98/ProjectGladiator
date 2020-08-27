@@ -16,33 +16,32 @@ public class Vehicle implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(name="VEHICLE_ID")
+	@Column(name="VEHICLE_ID", length=30)
 	private String vehicleId;
 
-	@Column(name="EX_SHOWROOM_PRICE")
+	@Column(name="EX_SHOWROOM_PRICE", length=20)
 	private float exShowroomPrice;
 
-	@Column(name="ON_ROAD_PRICE")
+	@Column(name="ON_ROAD_PRICE", length=20)
 	private float onRoadPrice;
 
-	@Column(name="VEHICLE_COLOUR", length=30)
+	@Column(name="VEHICLE_COLOUR", length=20)
 	private String vehicleColour;
 
 	@Column(name="VEHICLE_NAME", length=30)
 	private String vehicleName;
 	
-	@Column(name="VEHICLE_MODEL", length=30)
+	@Column(name="VEHICLE_MODEL", length=20)
 	private String vehicleModel;
 
-	@Column(name="VEHICLE_TYPE", length=30)
+	@Column(name="VEHICLE_TYPE", length=20)
 	private String vehicleType;
 
-	@Column(name="VEHICLE_YEAR")
+	@Column(name="VEHICLE_YEAR", length=5)
 	private long vehicleYear;
 
-	//bi-directional many-to-one association to Loan
-	@OneToMany(mappedBy="vehicle")
-	private List<Loan> loans;
+	@OneToOne(mappedBy = "vehicle")
+    private Loan loan;
 
 	public Vehicle() {
 	}
@@ -126,29 +125,19 @@ public class Vehicle implements Serializable {
 		this.vehicleYear = vehicleYear;
 	}
 
-
-	public List<Loan> getLoans() {
-		return loans;
-	}
-
-
-	public void setLoans(List<Loan> loans) {
-		this.loans = loans;
-	}
-
-
-	public Loan addLoan(Loan loan) {
-		getLoans().add(loan);
-		loan.setVehicle(this);
-
+	public Loan getLoan() {
 		return loan;
 	}
 
-	public Loan removeLoan(Loan loan) {
-		getLoans().remove(loan);
-		loan.setVehicle(null);
-
-		return loan;
+	public void setLoan(Loan loan) {
+		this.loan = loan;
 	}
 
+	@Override
+	public String toString() {
+		return "Vehicle [vehicleId=" + vehicleId + ", exShowroomPrice=" + exShowroomPrice + ", onRoadPrice="
+				+ onRoadPrice + ", vehicleColour=" + vehicleColour + ", vehicleName=" + vehicleName + ", vehicleModel="
+				+ vehicleModel + ", vehicleType=" + vehicleType + ", vehicleYear=" + vehicleYear + ", loan=" + loan
+				+ "]";
+	}
 }

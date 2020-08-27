@@ -2,7 +2,6 @@ package com.lti.model;
 
 import java.io.Serializable;
 import javax.persistence.*;
-import java.math.BigDecimal;
 
 
 /**
@@ -94,6 +93,13 @@ public class Admin implements Serializable {
 
 	public void setAdminPass(String adminPass) {
 		this.adminPass = adminPass;
+	}
+
+	@Override
+	public String toString() {
+		return "Admin [adminId=" + adminId + ", adminAge=" + adminAge + ", adminEmail=" + adminEmail + ", adminGender="
+				+ adminGender + ", adminNameFirst=" + adminNameFirst + ", adminNameLast=" + adminNameLast
+				+ ", adminPass=" + adminPass + "]";
 	}
 
 }

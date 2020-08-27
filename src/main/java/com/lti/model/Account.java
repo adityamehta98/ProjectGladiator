@@ -37,13 +37,12 @@ public class Account implements Serializable {
 	private String userEmploymentType;
 
 	//bi-directional many-to-one association to Loan
-	@ManyToOne
-	@JoinColumn(name="LOAN_ID")
-	private Loan loan;
+	@OneToMany(mappedBy = "account")
+	private List<Loan> loan;
 
 	//bi-directional many-to-one association to UserTable
-	@OneToMany(mappedBy="account")
-	private List<UserTable> userTables;
+	@OneToOne(mappedBy = "account",cascade=CascadeType.ALL,fetch=FetchType.EAGER)
+    private UserTable user;
 
 	public Account() {
 	}
@@ -112,34 +111,29 @@ public class Account implements Serializable {
 		this.userEmploymentType = userEmploymentType;
 	}
 
-	public Loan getLoan() {
-		return this.loan;
+	public UserTable getUser() {
+		return user;
 	}
 
-	public void setLoan(Loan loan) {
+	public void setUser(UserTable user) {
+		this.user = user;
+		System.out.println(user.toString());
+	}
+
+	public List<Loan> getLoan() {
+		return loan;
+	}
+
+	public void setLoan(List<Loan> loan) {
 		this.loan = loan;
 	}
 
-	public List<UserTable> getUserTables() {
-		return this.userTables;
-	}
-
-	public void setUserTables(List<UserTable> userTables) {
-		this.userTables = userTables;
-	}
-
-	public UserTable addUserTable(UserTable userTable) {
-		getUserTables().add(userTable);
-		userTable.setAccount(this);
-
-		return userTable;
-	}
-
-	public UserTable removeUserTable(UserTable userTable) {
-		getUserTables().remove(userTable);
-		userTable.setAccount(null);
-
-		return userTable;
+	@Override
+	public String toString() {
+		return "Account [accNumber=" + accNumber + ", accBankName=" + accBankName + ", accIfsc=" + accIfsc
+				+ ", accType=" + accType + ", exisitingEmi=" + exisitingEmi + ", monthlySavings=" + monthlySavings
+				+ ", salary=" + salary + ", userEmploymentType=" + userEmploymentType + ", loan=" + loan + ", user="
+				+ user + "]";
 	}
 
 }

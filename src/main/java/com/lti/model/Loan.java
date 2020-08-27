@@ -52,20 +52,15 @@ public class Loan implements Serializable {
 	@Column(name="LOAN_TYPE", length=30)
 	private String loantype;
 	
-	//bi-directional many-to-one association to Account
-	@OneToMany(mappedBy="loan")
-	private List<Account> accounts;
-
-	//bi-directional many-to-one association to Vehicle
-	@ManyToOne(fetch=FetchType.EAGER)
-	@JoinColumn(name="VEHICLE_ID")
+	@OneToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="VEHICLE_ID", referencedColumnName = "VEHICLE_ID")
 	private Vehicle vehicle;
 
-	//bi-directional many-to-one association to UserTable
-	@OneToMany(mappedBy="loan")
-	private List<UserTable> userTables;
+	@ManyToOne
+	@JoinColumn(name="ACC_NUMBER")
+	private Account account;
    
-
+//new
 	public Loan() {
 	}
 
@@ -149,28 +144,6 @@ public class Loan implements Serializable {
 		this.tenure = tenure;
 	}
 
-	public List<Account> getAccounts() {
-		return this.accounts;
-	}
-
-	public void setAccounts(List<Account> accounts) {
-		this.accounts = accounts;
-	}
-
-	public Account addAccount(Account account) {
-		getAccounts().add(account);
-		account.setLoan(this);
-
-		return account;
-	}
-
-	public Account removeAccount(Account account) {
-		getAccounts().remove(account);
-		account.setLoan(null);
-
-		return account;
-	}
-
 	public Vehicle getVehicle() {
 		return this.vehicle;
 	}
@@ -179,27 +152,6 @@ public class Loan implements Serializable {
 		this.vehicle = vehicle;
 	}
 
-	public List<UserTable> getUserTables() {
-		return this.userTables;
-	}
-
-	public void setUserTables(List<UserTable> userTables) {
-		this.userTables = userTables;
-	}
-
-	public UserTable addUserTable(UserTable userTable) {
-		getUserTables().add(userTable);
-		userTable.setLoan(this);
-
-		return userTable;
-	}
-
-	public UserTable removeUserTable(UserTable userTable) {
-		getUserTables().remove(userTable);
-		userTable.setLoan(null);
-
-		return userTable;
-	}
 
 	public String getLoantype() {
 		return loantype;
@@ -207,6 +159,23 @@ public class Loan implements Serializable {
 
 	public void setLoantype(String loantype) {
 		this.loantype = loantype;
+	}
+
+	public Account getAccount() {
+		return account;
+	}
+
+	public void setAccount(Account account) {
+		this.account = account;
+	}
+
+	@Override
+	public String toString() {
+		return "Loan [loanId=" + loanId + ", applicationStatus=" + applicationStatus + ", emi=" + emi
+				+ ", interestRate=" + interestRate + ", loanAmount=" + loanAmount + ", loanEndDate=" + loanEndDate
+				+ ", loanStartDate=" + loanStartDate + ", loanStatus=" + loanStatus + ", processingFee=" + processingFee
+				+ ", tenure=" + tenure + ", loantype=" + loantype + ", vehicle=" + vehicle + ", account=" + account
+				+ "]";
 	}
 
 }
