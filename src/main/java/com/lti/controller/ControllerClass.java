@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -179,8 +180,8 @@ public class ControllerClass {
 	}
 	
 	
-	@PostMapping("/viewloanstatus")
-	public List<Loan> viewLoanStatus(@RequestBody long userId) 
+	@GetMapping("/viewloanstatus/{userId}")
+	public List<Loan> viewLoanStatus(@PathVariable("userId") long userId, IdDto iddto) 
 	{	
 		return userService.viewLoanStatus(userId);
 
