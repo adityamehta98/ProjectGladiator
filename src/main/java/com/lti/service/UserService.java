@@ -20,11 +20,15 @@ public interface UserService {
 	
 	List<UserTable> viewAllUsers();  //admin can view all registered users
 	
+	List<Loan> viewApplicationForm(); //For now user can view appplication form
+	
 	List<Loan> viewRejectedUsers();
 
 	List<Loan> viewApprovedUsers();
 
 	List<Loan> viewPendingUsers();
+	
+	
 	
 
 //	List<UserTable> viewRejectedUsers();
@@ -36,6 +40,8 @@ public interface UserService {
 	void approveLoan(long loanId);
 
 	void rejectLoan(long loanId);
+
+
 	
 	
 }

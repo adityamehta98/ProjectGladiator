@@ -80,10 +80,15 @@ public class UserServiceImpl implements UserService {
 	public void registerLoan(Loan loan) {
 			repointerface.registerLoan(loan);
 	}
-
+	
 	@Override
 	public List<UserTable> viewAllUsers() {
 		return repointerface.fetchAllRegisteredUsers();
+	}
+
+	@Override
+	public List<Loan> viewApplicationForm() {
+		return repointerface.fetchApplicationForm();
 	}
 	
 	@Override

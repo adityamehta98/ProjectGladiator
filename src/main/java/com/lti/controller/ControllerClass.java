@@ -143,6 +143,13 @@ public class ControllerClass {
 		}
 	}
 	
+	@GetMapping("/viewapplicationform")
+	public List<Loan> viewApplicationForm() 
+	{	
+		return userService.viewApplicationForm();
+
+	}
+	
 	@GetMapping("/viewallusers")
 	public List<UserTable> viewAllUsers() 
 	{	

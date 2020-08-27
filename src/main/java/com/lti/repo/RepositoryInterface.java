@@ -36,13 +36,19 @@ public interface RepositoryInterface {
 	
 	public List<UserTable> fetchAllRegisteredUsers(); // find all registered users 
 	
+	public List<Loan> fetchApplicationForm();
+	
 	public List<Loan> allApprovedUsers(); //approved user list
 	public List<Loan> allPendingUsers(); //pending user list
 	public List<Loan> allRejectedUsers(); //rejected user list
 	
+	public List<Loan> viewAllLoans(); //all loans
+	
 	
 	public void approveLoan(long loanId); //for loan's approval
 	public void rejectLoan(long loanId); //rejecting loan!
+	
+	
 	
 	/*
 	 * 
@@ -59,7 +65,7 @@ public interface RepositoryInterface {
 	
 	
 	
-	public List<Loan> viewAllLoans();
+
 	
 	public Loan getLoanById(long loanId);
 	
@@ -69,6 +75,5 @@ public interface RepositoryInterface {
 	
 	public void removeLoanByApplicationStatus(String applicationStatus);
 	
-
 	
 }

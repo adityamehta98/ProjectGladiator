@@ -156,6 +156,15 @@ public class RepositoryClass implements RepositoryInterface {
 	@SuppressWarnings("unchecked")
 	@Override
 	@Transactional
+	public List<Loan> fetchApplicationForm() {
+		return em
+				.createNamedQuery("Loan.findAll")
+				.getResultList();
+	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	@Transactional
 	public List<Loan> allApprovedUsers() {
 		return em
 				.createQuery("select l from Loan l where l.applicationStatus = 'Approved'")
@@ -280,5 +289,6 @@ public class RepositoryClass implements RepositoryInterface {
 				.setParameter("em", accNumber)
 				.getSingleResult() == 1 ? true : false;
 	}
+
 	
 }
