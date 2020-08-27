@@ -213,7 +213,7 @@ public class ControllerClass {
 		}
 	}
 	
-	@PostMapping("/approveLoan")
+	@PostMapping("/approveloan")
 	public Status register(@RequestBody long loanId) 
 	{
 		try 
