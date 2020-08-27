@@ -187,8 +187,10 @@ public class Loan implements Serializable {
 		return "Loan [loanId=" + loanId + ", applicationStatus=" + applicationStatus + ", emi=" + emi
 				+ ", interestRate=" + interestRate + ", loanAmount=" + loanAmount + ", loanEndDate=" + loanEndDate
 				+ ", loanStartDate=" + loanStartDate + ", loanStatus=" + loanStatus + ", processingFee=" + processingFee
-				+ ", tenure=" + tenure + ", loantype=" + loantype + ", vehicle=" + vehicle + ", account=" + account
-				+ "]";
+				+ ", tenure=" + tenure + ", loantype=" + loantype + ", user_id=" + user_id + ", vehicle=" + vehicle
+				+ ", account=" + account + "]";
 	}
+
+
 
 }

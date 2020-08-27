@@ -30,24 +30,24 @@ public class NewProjectApplicationTests {
 	
 	@Test
 	void getLoanStatus() {
-		System.out.println(repo.getLoanStatusByUserId(10));
+		System.out.println(repo.getLoanStatusByUserId(34));
 	}
 	
-//	@Test
-//	void registerLoan() {
-//		Loan loan=new Loan();
-//		loan.setLoanId(4);
-//		loan.setLoanAmount(190000);
-//		loan.setInterestRate(10);
-//		loan.setProcessingFee(10000);
-//		loan.setEmi(30000);
-//		loan.setTenure(8);
-//		loan.setApplicationStatus("Rejected");
-//		loan.setLoanStatus("Old");
-////		loan.setLoanStartDate(Date.valueOf("2019-09-12"));
-////		loan.setLoanEndDate(Date.valueOf("2020-07-12"));
-//		System.out.println(repo.registerLoan(loan));
-//	}
+	@Test
+	void registerLoan() {
+		Loan loan=new Loan();
+		loan.setLoanAmount(190000);
+		loan.setInterestRate(10);
+		loan.setProcessingFee(10000);
+		loan.setEmi(30000);
+		loan.setTenure(8);
+		loan.setApplicationStatus("Rejected");
+		loan.setLoanStatus("Old");
+		loan.setUser_id(34);
+//		loan.setLoanStartDate(Date.valueOf("2019-09-12"));
+//		loan.setLoanEndDate(Date.valueOf("2020-07-12"));
+		System.out.println(repo.registerLoan(loan));
+	}
 	
 //	@Test
 //	void getApprovedUsers() {
@@ -77,23 +77,22 @@ public class NewProjectApplicationTests {
 //	}
 //	
 //
-//	@Test
-//	void registerUser() {
-//
-//		UserTable user=new UserTable();
-//		user.setUserId(2);
-//		user.setUserNameFirst("Min");
-//		user.setUserNameLast("Yoongi");
-//		user.setUserNameMiddle("");
-//		user.setUserAge(26);
-//		user.setUserGender("Male");
-//		user.setUserAddress("Daegu, South Korea");
-//		user.setUserEmail("minyoongi@gmail.com");
-//		user.setUserPass("yoonmin");
-//		user.setUserZip("262405");
-//		user.setUserType("New");
-//		repo.registerUser(user);
-//	}
+	@Test
+	void registerUser() {
+
+		UserTable user=new UserTable();
+		user.setUserNameFirst("Min");
+		user.setUserNameLast("Yoongi");
+		user.setUserNameMiddle("");
+		user.setUserAge(26);
+		user.setUserGender("Male");
+		user.setUserAddress("Daegu, South Korea");
+		user.setUserEmail("minyoongi@gmail.com");
+		user.setUserPass("yoonmin");
+		user.setUserZip("262405");
+		user.setUserType("New");
+		repo.registerUser(user);
+	}
 //	
 //	@Test
 //	void removeUser() {
