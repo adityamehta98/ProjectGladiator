@@ -52,8 +52,14 @@ public class ControllerClass {
 			LoginStatus loginStatus = new LoginStatus();
 			loginStatus.setStatus(StatusType.SUCCESS);
 			loginStatus.setMessage("Login Successful");
-			loginStatus.setUserId(user.getUserId());
+			loginStatus.setuserId(user.getUserId());
 			loginStatus.setUserNameFirst(user.getUserNameFirst());
+			loginStatus.setUserNameLast(user.getUserNameLast());
+			loginStatus.setUserAge(user.getUserAge());
+			loginStatus.setUserEmail(user.getUserEmail());
+			loginStatus.setUserAddress(user.getUserAddress());
+			loginStatus.setUserGender(user.getUserGender());
+			loginStatus.setUserZip(user.getUserZip());
 			return loginStatus;
 		}
 		catch(CustomerServiceException e) {
@@ -253,19 +259,61 @@ public class ControllerClass {
 	
 		public static class LoginStatus extends Status {
 			private long userId;
-			private String name;
+			private String userNameFirst;
+			private String userNameLast;
+			private int userAge;
+			private String userEmail;
+			private String userAddress;
+			private String userGender;
+			private String userZip;
 			
+			public String getUserGender() {
+				return userGender;
+			}
+			public void setUserGender(String userGender) {
+				this.userGender = userGender;
+			}
+			public String getUserZip() {
+				return userZip;
+			}
+			public void setUserZip(String userZip) {
+				this.userZip = userZip;
+			}
+			public String getUserAddress() {
+				return userAddress;
+			}
+			public void setUserAddress(String userAddress) {
+				this.userAddress = userAddress;
+			}
 			public long getuserId() {
 				return userId;
 			}
-			public void setUserId(long userId) {
+			public void setuserId(long userId) {
 				this.userId = userId;
 			}
 			public String getUserNameFirst() {
-				return name;
+				return userNameFirst;
 			}
 			public void setUserNameFirst(String name) {
-				this.name = name;
+				this.userNameFirst = name;
+			}
+			public String getUserNameLast() {
+				return userNameLast;
+			}
+			public void setUserNameLast(String userNameLast) {
+				this.userNameLast = userNameLast;
+			}
+			public int getUserAge() {
+				return userAge;
+			}
+			public void setUserAge(int userAge) {
+				this.userAge = userAge;
+			}
+			public String getUserEmail() {
+				return userEmail;
+			}
+			public void setUserEmail(String userEmail) {
+				this.userEmail = userEmail;
 			}
 		}
 		

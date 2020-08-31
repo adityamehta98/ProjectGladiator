@@ -12,6 +12,7 @@
 	<artifactId>ProjectGladiator</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>Gladiator</name>
+	
 	<description>Demo project for Spring Boot</description>
 
 	<properties>

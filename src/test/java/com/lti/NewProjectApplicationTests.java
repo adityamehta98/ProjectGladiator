@@ -14,6 +14,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.test.annotation.Rollback;
 
+import com.lti.model.Admin;
 import com.lti.model.Loan;
 import com.lti.model.UserTable;
 import com.lti.repo.RepositoryInterface;
@@ -119,12 +120,12 @@ public class NewProjectApplicationTests {
 //	void registerAdmin() {
 //		Admin admin = new Admin();
 //		admin.setAdminId(1001);
-//		admin.setAdminEmail("kavaK@gmail.com");
-//		admin.setAdminNameFirst("KavitaJi");
-//		admin.setAdminNameLast("Karki");
-//		admin.setAdminGender("Female");
-//		admin.setAdminPass("abcd1234");
-//		admin.setAdminAge(BigDecimal.valueOf(21));
+//		admin.setAdminEmail("adi@gmail.com");
+//		admin.setAdminNameFirst("Aditya");
+//		admin.setAdminNameLast("Mehta");
+//		admin.setAdminGender("Male");
+//		admin.setAdminPass("1234");
+//		admin.setAdminAge(21);
 //		System.out.println(repo.registerAdmin(admin));
 //	}
 //	

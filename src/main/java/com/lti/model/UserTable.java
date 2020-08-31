@@ -5,11 +5,6 @@ import java.util.List;
 
 import javax.persistence.*;
 
-
-/**
- * The persistent class for the USER_TABLE database table.
- * 
- */
 @Entity
 @Table(name="USER_TABLE")
 @NamedQuery(name="UserTable.findAll", query="SELECT u FROM UserTable u")
@@ -53,7 +48,7 @@ public class UserTable implements Serializable {
 	private String userZip;
 
 	//bi-directional one-to-one association to Account
-	@OneToOne(cascade=CascadeType.ALL,fetch=FetchType.EAGER)
+	@OneToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="ACC_NUMBER", referencedColumnName = "ACC_NUMBER")
 	private Account account;//repo.user
 
